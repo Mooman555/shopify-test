@@ -15,7 +15,7 @@ import {
 } from "@shopify/polaris";
 import moment from "moment";
 import DatePicker from "react-datepicker";
-import TimezoneSelect from "react-timezone-select";
+// import TimezoneSelect from "react-timezone-select";
 import "react-datepicker/dist/react-datepicker.css";
 import "./style.css";
 // import { useAppBridge } from "@shopify/app-bridge-react";
@@ -32,25 +32,25 @@ export const AddGiveAway = () => {
 
   const [longName, setLongName] = useState("");
   const [shortName, setShortName] = useState("");
-  const [orderMessage, setOrderMessage] = useState("");
-  const [timerBonusEntries, setTimerBonusEntries] = useState("");
+  //   const [orderMessage, setOrderMessage] = useState("");
+  //   const [timerBonusEntries, setTimerBonusEntries] = useState("");
 
-  const [accountBonusEntries, setAccountBonusEntries] = useState("");
-  const [friendBonusEntries, setFriendBonusEntries] = useState("");
+  //   const [accountBonusEntries, setAccountBonusEntries] = useState("");
+  //   const [friendBonusEntries, setFriendBonusEntries] = useState("");
 
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
 
-  const [selectedTimezone, setSelectedTimezone] = useState({});
-  const [selected, setSelected] = useState("single");
-  const [multiplierSelected, setMultiplierSelect] = useState("1x");
-  const [timeToObtainBonus, setTimeToObtainBonus] = useState("");
-  const [checked, setChecked] = useState(false);
-  const [referFriendchecked, setRefereFriendChecked] = useState(false);
+  //   const [selectedTimezone, setSelectedTimezone] = useState({});
+  //   const [selected, setSelected] = useState("single");
+  //   const [multiplierSelected, setMultiplierSelect] = useState("1x");
+  //   const [timeToObtainBonus, setTimeToObtainBonus] = useState("");
+  //   const [checked, setChecked] = useState(false);
+  //   const [referFriendchecked, setRefereFriendChecked] = useState(false);
 
-  const [referFriendLink, setReferFriendLink] = useState(false);
+  //   const [referFriendLink, setReferFriendLink] = useState(false);
 
   const [validations, setValidations] = useState({
     valid_from_date: true,
@@ -61,34 +61,34 @@ export const AddGiveAway = () => {
     valid_to_time: true,
   });
 
-  const options = [
-    { label: "Single", value: "single" },
-    { label: "Dual", value: "dual" },
-    { label: "Triple", value: "triple" },
-  ];
+  //   const options = [
+  //     { label: "Single", value: "single" },
+  //     { label: "Dual", value: "dual" },
+  //     { label: "Triple", value: "triple" },
+  //   ];
 
-  const MultiplierOptions = [
-    { label: "1x", value: "1" },
-    { label: "5x", value: "5" },
-    { label: "10x", value: "10" },
-  ];
+  //   const MultiplierOptions = [
+  //     { label: "1x", value: "1" },
+  //     { label: "5x", value: "5" },
+  //     { label: "10x", value: "10" },
+  //   ];
 
-  const obtainBonusOptions = [
-    { label: "10 Minutes", value: "10" },
-    { label: "30 Minutes", value: "30" },
-    { label: "45 Minutes", value: "45" },
-  ];
+  //   const obtainBonusOptions = [
+  //     { label: "10 Minutes", value: "10" },
+  //     { label: "30 Minutes", value: "30" },
+  //     { label: "45 Minutes", value: "45" },
+  //   ];
 
-  const handleSelectChange = (value) => setSelected(value);
+  //   const handleSelectChange = (value) => setSelected(value);
 
-  const handleMultiplierSelectChange = (value) => setMultiplierSelect(value);
+  //   const handleMultiplierSelectChange = (value) => setMultiplierSelect(value);
 
-  const handleSetTimeToObtainBonus = (value) => setTimeToObtainBonus(value);
+  //   const handleSetTimeToObtainBonus = (value) => setTimeToObtainBonus(value);
 
-  const handleChange = (newChecked) => setChecked(newChecked);
+  //   const handleChange = (newChecked) => setChecked(newChecked);
 
-  const handleFriendRefereChange = (newChecked) =>
-    setRefereFriendChecked(newChecked);
+  //   const handleFriendRefereChange = (newChecked) =>
+  //     setRefereFriendChecked(newChecked);
 
   const submitGiveAway = () => {
     let _data = {
@@ -293,7 +293,7 @@ export const AddGiveAway = () => {
                 </Stack>
               </Stack>
               <br />
-              <Stack>
+              {/* <Stack>
                 <Stack.Item fill>
                   <TextStyle variation="strong">Time Zone</TextStyle>
                   <TimezoneSelect
@@ -301,11 +301,11 @@ export const AddGiveAway = () => {
                     onChange={setSelectedTimezone}
                   />
                 </Stack.Item>
-              </Stack>
+              </Stack> */}
             </Card>
           </FormLayout>
         </Layout.AnnotatedSection>
-
+        {/* 
         <Layout.AnnotatedSection
           title="Entry Information"
           description="Shopify and your customers will use this information to contact you."
@@ -347,8 +347,8 @@ export const AddGiveAway = () => {
               </Stack>
             </Card>
           </FormLayout>
-        </Layout.AnnotatedSection>
-
+        </Layout.AnnotatedSection> */}
+        {/* 
         <Layout.AnnotatedSection
           title="Time Bonus Entry Information"
           description="Shopify and your customers will use this information to contact you."
@@ -378,8 +378,8 @@ export const AddGiveAway = () => {
               <br />
             </Card>
           </FormLayout>
-        </Layout.AnnotatedSection>
-
+        </Layout.AnnotatedSection> */}
+        {/* 
         <Layout.AnnotatedSection
           title="Special Bonus Entry Information"
           description="Shopify and your customers will use this information to contact you."
@@ -446,6 +446,8 @@ export const AddGiveAway = () => {
             </Card>
           </FormLayout>
         </Layout.AnnotatedSection>
+    
+     */}
       </Layout>
       <br />
       <br />
