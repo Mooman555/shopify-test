@@ -15,8 +15,8 @@ import {
 } from "@shopify/polaris";
 import moment from "moment";
 // import DatePicker from "react-datepicker";
-import TimezoneSelect from "react-timezone-select";
-import "react-datepicker/dist/react-datepicker.css";
+// import TimezoneSelect from "react-timezone-select";
+// import "react-datepicker/dist/react-datepicker.css";
 import "./style.css";
 import { useAppBridge } from "@shopify/app-bridge-react";
 import { Redirect } from "@shopify/app-bridge/actions";
@@ -43,7 +43,7 @@ export const AddGiveAway = () => {
   //   const [startTime, setStartTime] = useState("");
   //   const [endTime, setEndTime] = useState("");
 
-  const [selectedTimezone, setSelectedTimezone] = useState({});
+  //   const [selectedTimezone, setSelectedTimezone] = useState({});
   const [selected, setSelected] = useState("single");
   const [multiplierSelected, setMultiplierSelect] = useState("1x");
   const [timeToObtainBonus, setTimeToObtainBonus] = useState("");
