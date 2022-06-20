@@ -15,7 +15,7 @@ import {
 } from "@shopify/polaris";
 import moment from "moment";
 // import DatePicker from "react-datepicker";
-import TimezoneSelect from "react-timezone-select";
+// import TimezoneSelect from "react-timezone-select";
 // import "react-datepicker/dist/react-datepicker.css";
 import "./style.css";
 import { useAppBridge } from "@shopify/app-bridge-react";
@@ -293,7 +293,7 @@ export const AddGiveAway = () => {
                 </Stack>
               </Stack>
               <br />
-              <Stack>
+              {/* <Stack>
                 <Stack.Item fill>
                   <TextStyle variation="strong">Time Zone</TextStyle>
                   <TimezoneSelect
@@ -301,7 +301,7 @@ export const AddGiveAway = () => {
                     onChange={setSelectedTimezone}
                   />
                 </Stack.Item>
-              </Stack>
+              </Stack> */}
             </Card>
           </FormLayout>
         </Layout.AnnotatedSection>
