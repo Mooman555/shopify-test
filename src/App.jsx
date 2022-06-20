@@ -15,7 +15,7 @@ import translations from "@shopify/polaris/locales/en.json";
 import "@shopify/polaris/build/esm/styles.css";
 
 import { HomePage } from "./components/HomePage";
-// import { AddGiveAway } from "./components/AddGiveAway";
+import { AddGiveAway } from "./components/AddGiveAway";
 
 export default function App() {
   return (
@@ -28,9 +28,9 @@ export default function App() {
         }}
       >
         <MyProvider>
-          <p>Hello</p>
+          {/* <p>Hello</p> */}
           {/* <HomePage /> */}
-          {/* <AddGiveAway /> */}
+          <AddGiveAway />
         </MyProvider>
       </AppBridgeProvider>
     </PolarisProvider>
