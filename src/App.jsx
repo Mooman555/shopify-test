@@ -12,28 +12,34 @@ import { authenticatedFetch } from "@shopify/app-bridge-utils";
 import { Redirect } from "@shopify/app-bridge/actions";
 import { AppProvider as PolarisProvider } from "@shopify/polaris";
 import translations from "@shopify/polaris/locales/en.json";
+import { BrowserRouter } from "react-router-dom";
+import Link from "./Link";
+import Routes from "./Routes";
 import "@shopify/polaris/build/esm/styles.css";
 
 // import { HomePage } from "./components/HomePage";
-import { AddGiveAway } from "./components/AddGiveAway";
+// import { AddGiveAway } from "./components/AddGiveAway";
 
 export default function App() {
   return (
-    <PolarisProvider i18n={translations}>
-      <AppBridgeProvider
-        config={{
-          apiKey: process.env.SHOPIFY_API_KEY,
-          host: new URL(location).searchParams.get("host"),
-          forceRedirect: true,
-        }}
-      >
-        <MyProvider>
-          {/* <p>Hello</p> */}
-          {/* <HomePage /> */}
-          <AddGiveAway />
-        </MyProvider>
-      </AppBridgeProvider>
-    </PolarisProvider>
+    <BrowserRouter>
+      <PolarisProvider i18n={translations}>
+        <AppBridgeProvider
+          config={{
+            apiKey: process.env.SHOPIFY_API_KEY,
+            host: new URL(location).searchParams.get("host"),
+            forceRedirect: true,
+          }}
+        >
+          <MyProvider linkComponent={Link}>
+            {/* <p>Hello</p> */}
+            {/* <HomePage /> */}
+            <Routes />
+            {/* <AddGiveAway /> */}
+          </MyProvider>
+        </AppBridgeProvider>
+      </PolarisProvider>
+    </BrowserRouter>
   );
 }
 
