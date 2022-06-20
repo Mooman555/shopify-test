@@ -28,9 +28,9 @@ export default function App() {
         }}
       >
         <MyProvider>
-          {/* <p>Hello</p> */}
+          <p>Hello</p>
           {/* <HomePage /> */}
-          <AddGiveAway />
+          {/* <AddGiveAway /> */}
         </MyProvider>
       </AppBridgeProvider>
     </PolarisProvider>
