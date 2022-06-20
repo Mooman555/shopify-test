@@ -12,6 +12,7 @@ import {
   Heading,
   Checkbox,
   InlineError,
+  DatePicker,
 } from "@shopify/polaris";
 import moment from "moment";
 // import DatePicker from "react-datepicker";
@@ -24,11 +25,11 @@ import { Redirect } from "@shopify/app-bridge/actions";
 export const AddGiveAway = ({ setToggle }) => {
   const app = useAppBridge();
   const redirect = Redirect.create(app);
-  //   const [{ month, year }, setDate] = useState({ month: 1, year: 2018 });
-  //   const [selectedDates, setSelectedDates] = useState({
-  //     start: new Date("Wed Feb 07 2018 00:00:00 GMT-0500 (EST)"),
-  //     end: new Date("Wed Feb 07 2018 00:00:00 GMT-0500 (EST)"),
-  //   });
+  const [{ month, year }, setDate] = useState({ month: 1, year: 2018 });
+  const [selectedDates, setSelectedDates] = useState({
+    start: new Date("Wed Feb 07 2018 00:00:00 GMT-0500 (EST)"),
+    end: new Date("Wed Feb 07 2018 00:00:00 GMT-0500 (EST)"),
+  });
 
   const [longName, setLongName] = useState("");
   const [shortName, setShortName] = useState("");
@@ -89,6 +90,11 @@ export const AddGiveAway = ({ setToggle }) => {
 
   const handleFriendRefereChange = (newChecked) =>
     setRefereFriendChecked(newChecked);
+
+  const handleMonthChange = (month, year) => {
+    console.log(month, year, "month year");
+    setDate({ month, year });
+  };
 
   const submitGiveAway = () => {
     let _data = {
@@ -202,6 +208,15 @@ export const AddGiveAway = ({ setToggle }) => {
                         });
                       }}
                     /> */}
+                    <DatePicker
+                      month={month}
+                      year={year}
+                      onChange={setSelectedDates}
+                      onMonthChange={handleMonthChange}
+                      selected={selectedDates}
+                      multiMonth
+                      allowRange
+                    />
                     {!validations.valid_from_date && (
                       <InlineError
                         message="This field name is required"
