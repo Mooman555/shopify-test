@@ -51,7 +51,8 @@ export const GiveAwayList = ({ setToggle }) => {
       ]}
       primaryAction={{
         content: "Add New Giveaway",
-        onAction: () => redirect.dispatch(Redirect.Action.APP, "/"),
+        // onAction: () => redirect.dispatch(Redirect.Action.APP, "/"),
+        onAction: () => setToggle(),
       }}
       divider
       fullWidth
