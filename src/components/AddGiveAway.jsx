@@ -4,12 +4,12 @@ import {
   Page,
   Layout,
   FormLayout,
-  TextField,
+  //   TextField,
   TextStyle,
   Stack,
   //   Select,
-  Button,
-  Heading,
+  //   Button,
+  //   Heading,
   //   Checkbox,
   InlineError,
 } from "@shopify/polaris";
@@ -30,8 +30,8 @@ export const AddGiveAway = () => {
   //     end: new Date("Wed Feb 07 2018 00:00:00 GMT-0500 (EST)"),
   //   });
 
-  const [longName, setLongName] = useState("");
-  const [shortName, setShortName] = useState("");
+  //   const [longName, setLongName] = useState("");
+  //   const [shortName, setShortName] = useState("");
   //   const [orderMessage, setOrderMessage] = useState("");
   //   const [timerBonusEntries, setTimerBonusEntries] = useState("");
 
@@ -138,7 +138,7 @@ export const AddGiveAway = () => {
       fullWidth
     >
       <Layout>
-        <Layout.AnnotatedSection
+        {/* <Layout.AnnotatedSection
           title="Contest Name"
           description="Shopify and your customers will use this information to contact you."
         >
@@ -172,7 +172,7 @@ export const AddGiveAway = () => {
               />
             </Card>
           </FormLayout>
-        </Layout.AnnotatedSection>
+        </Layout.AnnotatedSection> */}
 
         <Layout.AnnotatedSection
           title="Date Information "
