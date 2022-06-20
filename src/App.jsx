@@ -14,7 +14,7 @@ import { AppProvider as PolarisProvider } from "@shopify/polaris";
 import translations from "@shopify/polaris/locales/en.json";
 import { BrowserRouter } from "react-router-dom";
 import Link from "./Link";
-import Routes from "./Routes";
+// import Routes from "./Routes";
 import "@shopify/polaris/build/esm/styles.css";
 
 // import { HomePage } from "./components/HomePage";
