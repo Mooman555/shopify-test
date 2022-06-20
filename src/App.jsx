@@ -25,7 +25,7 @@ import { GiveAwayList } from "./components/GiveAwayList";
 export default function App() {
   const [toggleComponenent, setToggleComponenent] = useState(false);
 
-  setToggle = () => {
+  const setToggle = () => {
     setToggleComponenent((prev) => (prev = !prev));
   };
 
