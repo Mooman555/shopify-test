@@ -1,0 +1,47 @@
+.react-datepicker__input-container {
+  position: relative;
+  z-index: 1;
+}
+
+.react-datepicker__input-container input {
+  background-color: transparent !important;
+  padding-left: 54px;
+  z-index: 2;
+  position: relative;
+  outline: 0;
+  height: 35px;
+  border-radius: 5px;
+  border: 1px solid #aeb4b9;
+}
+
+.disbaled {
+  cursor: not-allowed;
+}
+
+.react-datepicker__input-container:before {
+  content: "";
+  position: absolute;
+  width: 17.91px;
+  height: 18.43px;
+  background-repeat: no-repeat;
+  inset: 7.6px 15.6px 15.6px 20.5px;
+  z-index: -1;
+}
+.datepicker .react-datepicker__input-container:before {
+  background-image: url("../assets/calendar.svg");
+}
+.timerpicker .react-datepicker__input-container:before {
+  background-image: url("../assets/clock.svg");
+}
+.react-datepicker-popper {
+  z-index: 99;
+}
+
+.bonus-schedule-button {
+  float: right;
+}
+
+#react-select-2-listbox {
+  /* position: relative !important; */
+  z-index: 99 !important;
+}
