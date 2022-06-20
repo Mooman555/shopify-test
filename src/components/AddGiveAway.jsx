@@ -24,11 +24,11 @@ import { Redirect } from "@shopify/app-bridge/actions";
 export const AddGiveAway = () => {
   const app = useAppBridge();
   const redirect = Redirect.create(app);
-  const [{ month, year }, setDate] = useState({ month: 1, year: 2018 });
-  const [selectedDates, setSelectedDates] = useState({
-    start: new Date("Wed Feb 07 2018 00:00:00 GMT-0500 (EST)"),
-    end: new Date("Wed Feb 07 2018 00:00:00 GMT-0500 (EST)"),
-  });
+  //   const [{ month, year }, setDate] = useState({ month: 1, year: 2018 });
+  //   const [selectedDates, setSelectedDates] = useState({
+  //     start: new Date("Wed Feb 07 2018 00:00:00 GMT-0500 (EST)"),
+  //     end: new Date("Wed Feb 07 2018 00:00:00 GMT-0500 (EST)"),
+  //   });
 
   const [longName, setLongName] = useState("");
   const [shortName, setShortName] = useState("");
