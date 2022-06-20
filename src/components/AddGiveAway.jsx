@@ -210,7 +210,7 @@ export const AddGiveAway = () => {
                 <Stack vertical={true}>
                   <TextStyle variation="strong">Start Time</TextStyle>
                   <div className="timerpicker">
-                    <DatePicker
+                    {/* <DatePicker
                       id="startTime"
                       showTimeSelect
                       showTimeSelectOnly
@@ -218,7 +218,7 @@ export const AddGiveAway = () => {
                       timeCaption="Time"
                       className={!startDate && "disbaled"}
                       disabled={!startDate ? true : false}
-                      //   dateFormat="h:mm"
+                    //   dateFormat="h:mm"
                       placeholderText="Select start time"
                       selected={startTime}
                       onChange={(date) => {
@@ -228,7 +228,7 @@ export const AddGiveAway = () => {
                           valid_from_time: true,
                         });
                       }}
-                    />
+                    /> */}
                   </div>
                   {/* {!validations?.valid_from_time && (
                     <InlineError
@@ -265,7 +265,7 @@ export const AddGiveAway = () => {
                 <Stack vertical={true}>
                   <TextStyle variation="strong">End Time</TextStyle>
                   <div className="timerpicker">
-                    <DatePicker
+                    {/* <DatePicker
                       id="endTime"
                       showTimeSelect
                       showTimeSelectOnly
@@ -273,14 +273,14 @@ export const AddGiveAway = () => {
                       className={!startDate && "disbaled"}
                       timeCaption="Time"
                       disabled={!endDate ? true : false}
-                      //   dateFormat="h:mm"
+                      dateFormat="h:mm"
                       placeholderText="Select end time"
                       selected={endTime}
                       onChange={(date) => {
                         setEndTime(date);
                         setValidations({ ...validations, valid_to_time: true });
                       }}
-                    />
+                    /> */}
                   </div>
                   {/* {!validations?.valid_to_time && (
                     <InlineError
