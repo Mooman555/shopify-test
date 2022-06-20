@@ -79,29 +79,18 @@ export const AddGiveAway = () => {
     { label: "45 Minutes", value: "45" },
   ];
 
-  const handleSelectChange = useCallback((value) => setSelected(value), []);
+  const handleSelectChange = (value) => setSelected(value);
 
-  const handleMultiplierSelectChange = useCallback(
-    (value) => setMultiplierSelect(value),
-    []
-  );
+  const handleMultiplierSelectChange = (value) => setMultiplierSelect(value);
 
-  const handleSetTimeToObtainBonus = useCallback(
-    (value) => setTimeToObtainBonus(value),
-    []
-  );
+  const handleSetTimeToObtainBonus = (value) => setTimeToObtainBonus(value);
 
-  const handleChange = useCallback((newChecked) => setChecked(newChecked), []);
+  const handleChange = (newChecked) => setChecked(newChecked);
 
-  const handleFriendRefereChange = useCallback(
-    (newChecked) => setRefereFriendChecked(newChecked),
-    []
-  );
+  const handleFriendRefereChange = (newChecked) =>
+    setRefereFriendChecked(newChecked);
 
-  const submitGiveAway = async () => {
-    console.log(startTime, "startTime");
-    console.log(endTime, "endTime");
-
+  const submitGiveAway = () => {
     let _data = {
       valid_from_date: startDate && moment(startDate).format("YYYY-MM-DD"),
       valid_to_date: endDate && moment(endDate).format("YYYY-MM-DD"),
