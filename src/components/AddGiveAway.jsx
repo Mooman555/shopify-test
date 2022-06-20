@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import {
-  //   Card,
+  Card,
   Page,
   Layout,
-  //   FormLayout,
+  FormLayout,
   //   TextField,
   TextStyle,
   //   Stack,
@@ -52,14 +52,14 @@ export const AddGiveAway = () => {
 
   //   const [referFriendLink, setReferFriendLink] = useState(false);
 
-  //   const [validations, setValidations] = useState({
-  //     valid_from_date: true,
-  //     valid_to_date: true,
-  //     name: true,
-  //     code: true,
-  //     valid_from_time: true,
-  //     valid_to_time: true,
-  //   });
+  const [validations, setValidations] = useState({
+    valid_from_date: true,
+    valid_to_date: true,
+    name: true,
+    code: true,
+    valid_from_time: true,
+    valid_to_time: true,
+  });
 
   //   const options = [
   //     { label: "Single", value: "single" },
@@ -138,9 +138,7 @@ export const AddGiveAway = () => {
       fullWidth
     >
       <Layout>
-        <Layout.AnnotatedSection>Hello</Layout.AnnotatedSection>
-
-        {/* <Layout.AnnotatedSection
+        <Layout.AnnotatedSection
           title="Contest Name"
           description="Shopify and your customers will use this information to contact you."
         >
@@ -152,7 +150,7 @@ export const AddGiveAway = () => {
                 value={longName}
                 onChange={(value) => {
                   setLongName(value);
-                  setValidations({ ...validations, name: true });
+                  //   setValidations({ ...validations, name: true });
                 }}
                 placeholder="DCG #55 - Widebody Supra + $40,000"
                 autoComplete="off"
@@ -168,13 +166,13 @@ export const AddGiveAway = () => {
                 placeholder="55"
                 onChange={(value) => {
                   setShortName(value);
-                  setValidations({ ...validations, code: true });
+                  //   setValidations({ ...validations, code: true });
                 }}
                 autoComplete="off"
               />
             </Card>
           </FormLayout>
-        </Layout.AnnotatedSection> */}
+        </Layout.AnnotatedSection>
         {/* 
         <Layout.AnnotatedSection
           title="Date Information "
