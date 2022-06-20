@@ -1,20 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 import {
-  Card,
+  //   Card,
   Page,
   Layout,
-  FormLayout,
+  //   FormLayout,
   //   TextField,
   TextStyle,
-  Stack,
+  //   Stack,
   //   Select,
   //   Button,
   //   Heading,
   //   Checkbox,
-  InlineError,
+  //   InlineError,
 } from "@shopify/polaris";
 // import moment from "moment";
-import DatePicker from "react-datepicker";
+// import DatePicker from "react-datepicker";
 // import TimezoneSelect from "react-timezone-select";
 // import "react-datepicker/dist/react-datepicker.css";
 // import "./style.css";
@@ -38,10 +38,10 @@ export const AddGiveAway = () => {
   //   const [accountBonusEntries, setAccountBonusEntries] = useState("");
   //   const [friendBonusEntries, setFriendBonusEntries] = useState("");
 
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
-  const [startTime, setStartTime] = useState("");
-  const [endTime, setEndTime] = useState("");
+  //   const [startDate, setStartDate] = useState("");
+  //   const [endDate, setEndDate] = useState("");
+  //   const [startTime, setStartTime] = useState("");
+  //   const [endTime, setEndTime] = useState("");
 
   //   const [selectedTimezone, setSelectedTimezone] = useState({});
   //   const [selected, setSelected] = useState("single");
@@ -52,14 +52,14 @@ export const AddGiveAway = () => {
 
   //   const [referFriendLink, setReferFriendLink] = useState(false);
 
-  const [validations, setValidations] = useState({
-    valid_from_date: true,
-    valid_to_date: true,
-    name: true,
-    code: true,
-    valid_from_time: true,
-    valid_to_time: true,
-  });
+  //   const [validations, setValidations] = useState({
+  //     valid_from_date: true,
+  //     valid_to_date: true,
+  //     name: true,
+  //     code: true,
+  //     valid_from_time: true,
+  //     valid_to_time: true,
+  //   });
 
   //   const options = [
   //     { label: "Single", value: "single" },
@@ -138,7 +138,7 @@ export const AddGiveAway = () => {
       fullWidth
     >
       <Layout>
-        <Layout.AnnotatedSection
+        {/* <Layout.AnnotatedSection
           title="Contest Name"
           description="Shopify and your customers will use this information to contact you."
         >
@@ -172,7 +172,7 @@ export const AddGiveAway = () => {
               />
             </Card>
           </FormLayout>
-        </Layout.AnnotatedSection>
+        </Layout.AnnotatedSection> */}
         {/* 
         <Layout.AnnotatedSection
           title="Date Information "
