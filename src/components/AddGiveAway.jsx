@@ -138,6 +138,8 @@ export const AddGiveAway = () => {
       fullWidth
     >
       <Layout>
+        <Layout.AnnotatedSection>Hello</Layout.AnnotatedSection>
+
         {/* <Layout.AnnotatedSection
           title="Contest Name"
           description="Shopify and your customers will use this information to contact you."
