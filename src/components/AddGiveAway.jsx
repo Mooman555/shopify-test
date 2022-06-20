@@ -38,10 +38,10 @@ export const AddGiveAway = () => {
   //   const [accountBonusEntries, setAccountBonusEntries] = useState("");
   //   const [friendBonusEntries, setFriendBonusEntries] = useState("");
 
-  //   const [startDate, setStartDate] = useState("");
-  //   const [endDate, setEndDate] = useState("");
-  //   const [startTime, setStartTime] = useState("");
-  //   const [endTime, setEndTime] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
+  const [startTime, setStartTime] = useState("");
+  const [endTime, setEndTime] = useState("");
 
   //   const [selectedTimezone, setSelectedTimezone] = useState({});
   //   const [selected, setSelected] = useState("single");
@@ -173,7 +173,7 @@ export const AddGiveAway = () => {
             </Card>
           </FormLayout>
         </Layout.AnnotatedSection>
-        {/* 
+
         <Layout.AnnotatedSection
           title="Date Information "
           description="This address will appear on your invoices."
@@ -198,12 +198,12 @@ export const AddGiveAway = () => {
                         });
                       }}
                     />
-                    {!validations?.valid_from_date && (
+                    {/* {!validations?.valid_from_date && (
                       <InlineError
                         message="This field name is required"
                         fieldID="startDate"
                       />
-                    )}
+                    )} */}
                   </div>
                 </Stack>
 
@@ -230,12 +230,12 @@ export const AddGiveAway = () => {
                       }}
                     />
                   </div>
-                  {!validations?.valid_from_time && (
+                  {/* {!validations?.valid_from_time && (
                     <InlineError
                       message="This field name is required"
                       fieldID="startTime"
                     />
-                  )}
+                  )} */}
                 </Stack>
               </Stack>
               <br />
@@ -253,12 +253,12 @@ export const AddGiveAway = () => {
                         setValidations({ ...validations, valid_to_date: true });
                       }}
                     />
-                    {!validations?.valid_to_date && (
+                    {/* {!validations?.valid_to_date && (
                       <InlineError
                         message="This field name is required"
                         fieldID="endDate"
                       />
-                    )}
+                    )} */}
                   </div>
                 </Stack>
 
@@ -282,16 +282,16 @@ export const AddGiveAway = () => {
                       }}
                     />
                   </div>
-                  {!validations?.valid_to_time && (
+                  {/* {!validations?.valid_to_time && (
                     <InlineError
                       message="This field name is required"
                       fieldID="endTime"
                     />
-                  )}
+                  )} */}
                 </Stack>
               </Stack>
               <br />
-              <Stack>
+              {/* <Stack>
                 <Stack.Item fill>
                   <TextStyle variation="strong">Time Zone</TextStyle>
                   <TimezoneSelect
@@ -299,12 +299,11 @@ export const AddGiveAway = () => {
                     onChange={setSelectedTimezone}
                   />
                 </Stack.Item>
-              </Stack>
+              </Stack> */}
             </Card>
           </FormLayout>
         </Layout.AnnotatedSection>
 
-         */}
         {/* 
         <Layout.AnnotatedSection
           title="Entry Information"
