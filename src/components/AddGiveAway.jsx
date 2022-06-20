@@ -183,53 +183,53 @@ export const AddGiveAway = () => {
               <Stack>
                 <Stack vertical={true}>
                   <TextStyle variation="strong">Start Date</TextStyle>
-                  <div className="datepicker">
-                    <DatePicker
-                      id="startDate"
-                      required
-                      className="icons8-time"
-                      placeholderText="Select start date"
-                      selected={startDate}
-                      //   onChange={(date) => {
-                      //     setStartDate(date);
-                      //     setValidations({
-                      //       ...validations,
-                      //       valid_from_date: true,
-                      //     });
-                      //   }}
-                    />
-                    {/* {!validations?.valid_from_date && (
+                  {/* <div className="datepicker"> */}
+                  <DatePicker
+                    id="startDate"
+                    required
+                    className="icons8-time"
+                    placeholderText="Select start date"
+                    //   selected={startDate}
+                    //   onChange={(date) => {
+                    //     setStartDate(date);
+                    //     setValidations({
+                    //       ...validations,
+                    //       valid_from_date: true,
+                    //     });
+                    //   }}
+                  />
+                  {/* {!validations?.valid_from_date && (
                       <InlineError
                         message="This field name is required"
                         fieldID="startDate"
                       />
                     )} */}
-                  </div>
+                  {/* </div> */}
                 </Stack>
 
                 <Stack vertical={true}>
                   <TextStyle variation="strong">Start Time</TextStyle>
-                  <div className="timerpicker">
-                    <DatePicker
-                      id="startTime"
-                      showTimeSelect
-                      showTimeSelectOnly
-                      timeIntervals={15}
-                      timeCaption="Time"
-                      className={!startDate && "disbaled"}
-                      disabled={!startDate ? true : false}
-                      dateFormat="h:mm"
-                      placeholderText="Select start time"
-                      selected={startTime}
-                      //   onChange={(date) => {
-                      //     setStartTime(date);
-                      //     setValidations({
-                      //       ...validations,
-                      //       valid_from_time: true,
-                      //     });
-                      //   }}
-                    />
-                  </div>
+                  {/* <div className="timerpicker"> */}
+                  <DatePicker
+                    id="startTime"
+                    showTimeSelect
+                    showTimeSelectOnly
+                    timeIntervals={15}
+                    timeCaption="Time"
+                    className={!startDate && "disbaled"}
+                    disabled={!startDate ? true : false}
+                    dateFormat="h:mm"
+                    placeholderText="Select start time"
+                    //   selected={startTime}
+                    //   onChange={(date) => {
+                    //     setStartTime(date);
+                    //     setValidations({
+                    //       ...validations,
+                    //       valid_from_time: true,
+                    //     });
+                    //   }}
+                  />
+                  {/* </div> */}
                   {/* {!validations?.valid_from_time && (
                     <InlineError
                       message="This field name is required"
@@ -242,46 +242,46 @@ export const AddGiveAway = () => {
               <Stack>
                 <Stack vertical={true}>
                   <TextStyle variation="strong">End Date</TextStyle>
-                  <div className="datepicker">
-                    <DatePicker
-                      id="endDate"
-                      required
-                      placeholderText="Select end date"
-                      selected={endDate}
-                      //   onChange={(date) => {
-                      //     setEndDate(date);
-                      //     setValidations({ ...validations, valid_to_date: true });
-                      //   }}
-                    />
-                    {/* {!validations?.valid_to_date && (
+                  {/* <div className="datepicker"> */}
+                  <DatePicker
+                    id="endDate"
+                    required
+                    placeholderText="Select end date"
+                    //   selected={endDate}
+                    //   onChange={(date) => {
+                    //     setEndDate(date);
+                    //     setValidations({ ...validations, valid_to_date: true });
+                    //   }}
+                  />
+                  {/* {!validations?.valid_to_date && (
                       <InlineError
                         message="This field name is required"
                         fieldID="endDate"
                       />
                     )} */}
-                  </div>
+                  {/* </div> */}
                 </Stack>
 
                 <Stack vertical={true}>
                   <TextStyle variation="strong">End Time</TextStyle>
-                  <div className="timerpicker">
-                    <DatePicker
-                      id="endTime"
-                      showTimeSelect
-                      showTimeSelectOnly
-                      timeIntervals={15}
-                      className={!startDate && "disbaled"}
-                      timeCaption="Time"
-                      disabled={!endDate ? true : false}
-                      dateFormat="h:mm"
-                      placeholderText="Select end time"
-                      selected={endTime}
-                      //   onChange={(date) => {
-                      //     setEndTime(date);
-                      //     setValidations({ ...validations, valid_to_time: true });
-                      //   }}
-                    />
-                  </div>
+                  {/* <div className="timerpicker"> */}
+                  <DatePicker
+                    id="endTime"
+                    showTimeSelect
+                    showTimeSelectOnly
+                    timeIntervals={15}
+                    className={!startDate && "disbaled"}
+                    timeCaption="Time"
+                    disabled={!endDate ? true : false}
+                    dateFormat="h:mm"
+                    placeholderText="Select end time"
+                    //   selected={endTime}
+                    //   onChange={(date) => {
+                    //     setEndTime(date);
+                    //     setValidations({ ...validations, valid_to_time: true });
+                    //   }}
+                  />
+                  {/* </div> */}
                   {/* {!validations?.valid_to_time && (
                     <InlineError
                       message="This field name is required"
