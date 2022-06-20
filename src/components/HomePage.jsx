@@ -51,7 +51,7 @@ export function HomePage() {
                     Ready to go? Start populating your app with some sample
                     products to view and test in your store.{" "}
                   </p>
-                  <p>
+                  {/* <p>
                     Learn more about building out your app in{" "}
                     <Link
                       url="https://shopify.dev/apps/getting-started/add-functionality"
@@ -60,7 +60,7 @@ export function HomePage() {
                       this Shopify tutorial
                     </Link>{" "}
                     📚{" "}
-                  </p>
+                  </p> */}
                 </TextContainer>
               </Stack.Item>
               <Stack.Item>
