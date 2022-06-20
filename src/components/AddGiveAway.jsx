@@ -30,8 +30,8 @@ export const AddGiveAway = () => {
   //     end: new Date("Wed Feb 07 2018 00:00:00 GMT-0500 (EST)"),
   //   });
 
-  //   const [longName, setLongName] = useState("");
-  //   const [shortName, setShortName] = useState("");
+  const [longName, setLongName] = useState("");
+  const [shortName, setShortName] = useState("");
   //   const [orderMessage, setOrderMessage] = useState("");
   //   const [timerBonusEntries, setTimerBonusEntries] = useState("");
 
