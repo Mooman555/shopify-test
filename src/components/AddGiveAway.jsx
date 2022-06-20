@@ -21,7 +21,7 @@ import "./style.css";
 import { useAppBridge } from "@shopify/app-bridge-react";
 import { Redirect } from "@shopify/app-bridge/actions";
 
-export const AddGiveAway = () => {
+export const AddGiveAway = ({ setToggle }) => {
   const app = useAppBridge();
   const redirect = Redirect.create(app);
   //   const [{ month, year }, setDate] = useState({ month: 1, year: 2018 });
@@ -112,9 +112,13 @@ export const AddGiveAway = () => {
         },
       })
         .then((response) => {
-          redirect.dispatch(Redirect.Action.APP, "/giveawaylist");
+          // redirect.dispatch(Redirect.Action.APP, "/giveawaylist");
+          setToggle();
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          setToggle();
+          console.log(err);
+        });
   };
 
   const validateData = (data) => {

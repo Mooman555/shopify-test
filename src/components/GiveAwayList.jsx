@@ -9,7 +9,7 @@ import {
 import { useAppBridge } from "@shopify/app-bridge-react";
 import { Redirect } from "@shopify/app-bridge/actions";
 
-export const GiveAwayList = (props) => {
+export const GiveAwayList = ({ setToggle }) => {
   const [giveAwaysList, setGiveAwaysList] = useState([]);
 
   useEffect(() => {
@@ -44,7 +44,8 @@ export const GiveAwayList = (props) => {
       breadcrumbs={[
         {
           content: "Giveaway",
-          onAction: () => redirect.dispatch(Redirect.Action.APP, "/"),
+          // onAction: () => redirect.dispatch(Redirect.Action.APP, "/"),
+          onAction: () => setToggle(),
           title: "Back",
         },
       ]}

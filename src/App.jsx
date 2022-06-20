@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import {
   ApolloClient,
   ApolloProvider,
@@ -19,8 +20,15 @@ import "@shopify/polaris/build/esm/styles.css";
 
 // import { HomePage } from "./components/HomePage";
 import { AddGiveAway } from "./components/AddGiveAway";
+import { GiveAwayList } from "./components/GiveAwayList";
 
 export default function App() {
+  const [toggleComponenent, setToggleComponenent] = useState(false);
+
+  setToggle = () => {
+    setToggleComponenent((prev) => (prev = !prev));
+  };
+
   return (
     // <BrowserRouter>
     <PolarisProvider i18n={translations}>
@@ -35,7 +43,11 @@ export default function App() {
           {/* <p>Hello</p> */}
           {/* <HomePage /> */}
           {/* <Routes /> */}
-          <AddGiveAway />
+          {toggleComponenent === false ? (
+            <AddGiveAway setToggle={setToggle} />
+          ) : (
+            <GiveAwayList setToggle={setToggle} />
+          )}
         </MyProvider>
       </AppBridgeProvider>
     </PolarisProvider>
