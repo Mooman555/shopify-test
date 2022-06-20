@@ -16,8 +16,8 @@ import {
 import moment from "moment";
 import DatePicker from "react-datepicker";
 // import TimezoneSelect from "react-timezone-select";
-import "react-datepicker/dist/react-datepicker.css";
-import "./style.css";
+// import "react-datepicker/dist/react-datepicker.css";
+// import "./style.css";
 // import { useAppBridge } from "@shopify/app-bridge-react";
 // import { Redirect } from "@shopify/app-bridge/actions";
 
