@@ -7,10 +7,10 @@ import {
   TextField,
   TextStyle,
   Stack,
-  Select,
+  //   Select,
   Button,
   Heading,
-  Checkbox,
+  //   Checkbox,
   InlineError,
 } from "@shopify/polaris";
 import moment from "moment";
@@ -102,8 +102,6 @@ export const AddGiveAway = () => {
 
     let isValidate = _data && validateData(_data);
 
-    console.log(isValidate, "isValidate");
-
     isValidate.length === 0 &&
       fetch("https://l1.gotomy.dev/shopify/api/v1/public/giveaways", {
         method: "POST",
@@ -135,7 +133,7 @@ export const AddGiveAway = () => {
 
   return (
     <Page
-      primaryAction={{ content: "Save", onAction: () => submitGiveAway() }}
+      //   primaryAction={{ content: "Save", onAction: () => submitGiveAway() }}
       divider
       fullWidth
     >
@@ -200,7 +198,7 @@ export const AddGiveAway = () => {
                         });
                       }}
                     />
-                    {!validations.valid_from_date && (
+                    {!validations?.valid_from_date && (
                       <InlineError
                         message="This field name is required"
                         fieldID="startDate"
@@ -232,7 +230,7 @@ export const AddGiveAway = () => {
                       }}
                     />
                   </div>
-                  {!validations.valid_from_time && (
+                  {!validations?.valid_from_time && (
                     <InlineError
                       message="This field name is required"
                       fieldID="startTime"
@@ -284,7 +282,7 @@ export const AddGiveAway = () => {
                       }}
                     />
                   </div>
-                  {!validations.valid_to_time && (
+                  {!validations?.valid_to_time && (
                     <InlineError
                       message="This field name is required"
                       fieldID="endTime"
@@ -452,7 +450,7 @@ export const AddGiveAway = () => {
       <br />
       <br />
 
-      <Stack>
+      {/* <Stack>
         <Stack.Item fill>
           <Heading></Heading>
         </Stack.Item>
@@ -461,7 +459,7 @@ export const AddGiveAway = () => {
             Save
           </Button>
         </Stack.Item>
-      </Stack>
+      </Stack> */}
       <br />
       <br />
     </Page>
