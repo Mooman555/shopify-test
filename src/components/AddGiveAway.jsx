@@ -135,7 +135,7 @@ export const AddGiveAway = () => {
 
   return (
     <Page
-      primaryAction={{ content: "Save", onAction: () => submitGiveAway() }}
+      primaryAction={{ content: "Save", onAction: submitGiveAway }}
       divider
       fullWidth
     >
