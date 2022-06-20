@@ -150,7 +150,7 @@ export const AddGiveAway = () => {
                 value={longName}
                 onChange={(value) => {
                   setLongName(value);
-                  //   setValidations({ ...validations, name: true });
+                  setValidations({ ...validations, name: true });
                 }}
                 placeholder="DCG #55 - Widebody Supra + $40,000"
                 autoComplete="off"
@@ -166,7 +166,7 @@ export const AddGiveAway = () => {
                 placeholder="55"
                 onChange={(value) => {
                   setShortName(value);
-                  //   setValidations({ ...validations, code: true });
+                  setValidations({ ...validations, code: true });
                 }}
                 autoComplete="off"
               />
