@@ -13,7 +13,7 @@ import {
   //   Checkbox,
   InlineError,
 } from "@shopify/polaris";
-import moment from "moment";
+// import moment from "moment";
 import DatePicker from "react-datepicker";
 // import TimezoneSelect from "react-timezone-select";
 // import "react-datepicker/dist/react-datepicker.css";
@@ -90,46 +90,46 @@ export const AddGiveAway = () => {
   //   const handleFriendRefereChange = (newChecked) =>
   //     setRefereFriendChecked(newChecked);
 
-  const submitGiveAway = () => {
-    let _data = {
-      valid_from_date: startDate && moment(startDate).format("YYYY-MM-DD"),
-      valid_to_date: endDate && moment(endDate).format("YYYY-MM-DD"),
-      name: longName,
-      code: shortName,
-      valid_from_time: startTime && moment(startTime).format("HH:mm"),
-      valid_to_time: endTime && moment(endTime).format("HH:mm"),
-    };
+  //   const submitGiveAway = () => {
+  //     let _data = {
+  //       valid_from_date: startDate && moment(startDate).format("YYYY-MM-DD"),
+  //       valid_to_date: endDate && moment(endDate).format("YYYY-MM-DD"),
+  //       name: longName,
+  //       code: shortName,
+  //       valid_from_time: startTime && moment(startTime).format("HH:mm"),
+  //       valid_to_time: endTime && moment(endTime).format("HH:mm"),
+  //     };
 
-    let isValidate = _data && validateData(_data);
+  //     let isValidate = _data && validateData(_data);
 
-    isValidate.length === 0 &&
-      fetch("https://l1.gotomy.dev/shopify/api/v1/public/giveaways", {
-        method: "POST",
-        body: JSON.stringify(_data),
-        // mode:"no-cors",
-        headers: {
-          "Content-type": "application/json",
-        },
-      })
-        .then((response) => {
-          //   redirect.dispatch(Redirect.Action.APP, "/giveawaylist");
-        })
-        .catch((err) => console.log(err));
-  };
+  //     isValidate.length === 0 &&
+  //       fetch("https://l1.gotomy.dev/shopify/api/v1/public/giveaways", {
+  //         method: "POST",
+  //         body: JSON.stringify(_data),
+  //         // mode:"no-cors",
+  //         headers: {
+  //           "Content-type": "application/json",
+  //         },
+  //       })
+  //         .then((response) => {
+  //           //   redirect.dispatch(Redirect.Action.APP, "/giveawaylist");
+  //         })
+  //         .catch((err) => console.log(err));
+  //   };
 
-  const validateData = (data) => {
-    let array = [];
-    let _validations = validations;
+  //   const validateData = (data) => {
+  //     let array = [];
+  //     let _validations = validations;
 
-    Object.keys(data).forEach((key) => {
-      if (data[key] === "") {
-        array.push(key);
-        _validations[key] = false;
-      }
-    });
-    setValidations({ ...validations, validations: _validations });
-    return array;
-  };
+  //     Object.keys(data).forEach((key) => {
+  //       if (data[key] === "") {
+  //         array.push(key);
+  //         _validations[key] = false;
+  //       }
+  //     });
+  //     setValidations({ ...validations, validations: _validations });
+  //     return array;
+  //   };
 
   return (
     <Page
