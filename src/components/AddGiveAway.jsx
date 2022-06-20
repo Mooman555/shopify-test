@@ -92,17 +92,15 @@ export const AddGiveAway = () => {
 
   const submitGiveAway = () => {
     let _data = {
-      valid_from_date: startDate && moment(startDate).format("YYYY-MM-DD"),
-      valid_to_date: endDate && moment(endDate).format("YYYY-MM-DD"),
+      valid_from_date: moment(new Date()).format("YYYY-MM-DD"),
+      valid_to_date: moment(new Date()).format("YYYY-MM-DD"),
       name: longName,
       code: shortName,
-      valid_from_time: startTime && moment(startTime).format("HH:mm"),
-      valid_to_time: endTime && moment(endTime).format("HH:mm"),
+      valid_from_time: moment(new Date()).format("HH:mm"),
+      valid_to_time: moment(new Date()).format("HH:mm"),
     };
 
     let isValidate = _data && validateData(_data);
-
-    console.log(isValidate, "isValidate");
 
     isValidate.length === 0 &&
       fetch("https://l1.gotomy.dev/shopify/api/v1/public/giveaways", {
