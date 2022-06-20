@@ -185,7 +185,7 @@ export const AddGiveAway = () => {
                   <TextStyle variation="strong">Start Date</TextStyle>
                   {/* <div className="datepicker"> */}
                   <DatePicker
-                    id="startDate"
+                    // id="startDate"
                     required
                     className="icons8-time"
                     placeholderText="Select start date"
@@ -211,13 +211,13 @@ export const AddGiveAway = () => {
                   <TextStyle variation="strong">Start Time</TextStyle>
                   {/* <div className="timerpicker"> */}
                   <DatePicker
-                    id="startTime"
+                    // id="startTime"
                     showTimeSelect
                     showTimeSelectOnly
                     timeIntervals={15}
                     timeCaption="Time"
-                    className={!startDate && "disbaled"}
-                    disabled={!startDate ? true : false}
+                    // className={!startDate && "disbaled"}
+                    // disabled={!startDate ? true : false}
                     dateFormat="h:mm"
                     placeholderText="Select start time"
                     //   selected={startTime}
@@ -244,7 +244,7 @@ export const AddGiveAway = () => {
                   <TextStyle variation="strong">End Date</TextStyle>
                   {/* <div className="datepicker"> */}
                   <DatePicker
-                    id="endDate"
+                    // id="endDate"
                     required
                     placeholderText="Select end date"
                     //   selected={endDate}
@@ -266,13 +266,13 @@ export const AddGiveAway = () => {
                   <TextStyle variation="strong">End Time</TextStyle>
                   {/* <div className="timerpicker"> */}
                   <DatePicker
-                    id="endTime"
+                    // id="endTime"
                     showTimeSelect
                     showTimeSelectOnly
                     timeIntervals={15}
-                    className={!startDate && "disbaled"}
+                    // className={!startDate && "disbaled"}
                     timeCaption="Time"
-                    disabled={!endDate ? true : false}
+                    // disabled={!endDate ? true : false}
                     dateFormat="h:mm"
                     placeholderText="Select end time"
                     //   selected={endTime}
