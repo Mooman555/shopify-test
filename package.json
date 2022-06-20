@@ -2,8 +2,8 @@
   "name": "shopify-app-node",
   "private": true,
   "scripts": {
-    "build": "npm run build:client",
-    "build:client": "vite build --outDir dist/client",
+    "build": "npm run build:client --max_old_space_size=4096 build",
+    "build:client": "vite build --outDir dist/client --max_old_space_size=4096 build",
     "debug": "node --inspect-brk server/index.js",
     "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch ./server",
     "prepare": "husky install",
