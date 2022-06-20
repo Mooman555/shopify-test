@@ -7,23 +7,23 @@ import {
   TextField,
   TextStyle,
   Stack,
-  // Select,
-  // Button,
-  // Heading,
-  // Checkbox,
-  // InlineError,
+  Select,
+  Button,
+  Heading,
+  Checkbox,
+  InlineError,
 } from "@shopify/polaris";
-// import moment from "moment";
-import DatePicker from "react-datepicker";
-// import TimezoneSelect from "react-timezone-select";
-// import "react-datepicker/dist/react-datepicker.css";
-// import "./style.css";
-// import { useAppBridge } from "@shopify/app-bridge-react";
-// import { Redirect } from "@shopify/app-bridge/actions";
+import moment from "moment";
+// import DatePicker from "react-datepicker";
+import TimezoneSelect from "react-timezone-select";
+import "react-datepicker/dist/react-datepicker.css";
+import "./style.css";
+import { useAppBridge } from "@shopify/app-bridge-react";
+import { Redirect } from "@shopify/app-bridge/actions";
 
 export const AddGiveAway = () => {
-  //   const app = useAppBridge();
-  //   const redirect = Redirect.create(app);
+  const app = useAppBridge();
+  const redirect = Redirect.create(app);
   //   const [{ month, year }, setDate] = useState({ month: 1, year: 2018 });
   //   const [selectedDates, setSelectedDates] = useState({
   //     start: new Date("Wed Feb 07 2018 00:00:00 GMT-0500 (EST)"),
@@ -32,25 +32,25 @@ export const AddGiveAway = () => {
 
   const [longName, setLongName] = useState("");
   const [shortName, setShortName] = useState("");
-  //   const [orderMessage, setOrderMessage] = useState("");
-  //   const [timerBonusEntries, setTimerBonusEntries] = useState("");
+  const [orderMessage, setOrderMessage] = useState("");
+  const [timerBonusEntries, setTimerBonusEntries] = useState("");
 
-  //   const [accountBonusEntries, setAccountBonusEntries] = useState("");
-  //   const [friendBonusEntries, setFriendBonusEntries] = useState("");
+  const [accountBonusEntries, setAccountBonusEntries] = useState("");
+  const [friendBonusEntries, setFriendBonusEntries] = useState("");
 
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
-  const [startTime, setStartTime] = useState("");
-  const [endTime, setEndTime] = useState("");
+  //   const [startDate, setStartDate] = useState("");
+  //   const [endDate, setEndDate] = useState("");
+  //   const [startTime, setStartTime] = useState("");
+  //   const [endTime, setEndTime] = useState("");
 
-  //   const [selectedTimezone, setSelectedTimezone] = useState({});
-  //   const [selected, setSelected] = useState("single");
-  //   const [multiplierSelected, setMultiplierSelect] = useState("1x");
-  //   const [timeToObtainBonus, setTimeToObtainBonus] = useState("");
-  //   const [checked, setChecked] = useState(false);
-  //   const [referFriendchecked, setRefereFriendChecked] = useState(false);
+  const [selectedTimezone, setSelectedTimezone] = useState({});
+  const [selected, setSelected] = useState("single");
+  const [multiplierSelected, setMultiplierSelect] = useState("1x");
+  const [timeToObtainBonus, setTimeToObtainBonus] = useState("");
+  const [checked, setChecked] = useState(false);
+  const [referFriendchecked, setRefereFriendChecked] = useState(false);
 
-  //   const [referFriendLink, setReferFriendLink] = useState(false);
+  const [referFriendLink, setReferFriendLink] = useState(false);
 
   const [validations, setValidations] = useState({
     valid_from_date: true,
@@ -61,79 +61,81 @@ export const AddGiveAway = () => {
     valid_to_time: true,
   });
 
-  //   const options = [
-  //     { label: "Single", value: "single" },
-  //     { label: "Dual", value: "dual" },
-  //     { label: "Triple", value: "triple" },
-  //   ];
+  const options = [
+    { label: "Single", value: "single" },
+    { label: "Dual", value: "dual" },
+    { label: "Triple", value: "triple" },
+  ];
 
-  //   const MultiplierOptions = [
-  //     { label: "1x", value: "1" },
-  //     { label: "5x", value: "5" },
-  //     { label: "10x", value: "10" },
-  //   ];
+  const MultiplierOptions = [
+    { label: "1x", value: "1" },
+    { label: "5x", value: "5" },
+    { label: "10x", value: "10" },
+  ];
 
-  //   const obtainBonusOptions = [
-  //     { label: "10 Minutes", value: "10" },
-  //     { label: "30 Minutes", value: "30" },
-  //     { label: "45 Minutes", value: "45" },
-  //   ];
+  const obtainBonusOptions = [
+    { label: "10 Minutes", value: "10" },
+    { label: "30 Minutes", value: "30" },
+    { label: "45 Minutes", value: "45" },
+  ];
 
-  //   const handleSelectChange = (value) => setSelected(value);
+  const handleSelectChange = (value) => setSelected(value);
 
-  //   const handleMultiplierSelectChange = (value) => setMultiplierSelect(value);
+  const handleMultiplierSelectChange = (value) => setMultiplierSelect(value);
 
-  //   const handleSetTimeToObtainBonus = (value) => setTimeToObtainBonus(value);
+  const handleSetTimeToObtainBonus = (value) => setTimeToObtainBonus(value);
 
-  //   const handleChange = (newChecked) => setChecked(newChecked);
+  const handleChange = (newChecked) => setChecked(newChecked);
 
-  //   const handleFriendRefereChange = (newChecked) =>
-  //     setRefereFriendChecked(newChecked);
+  const handleFriendRefereChange = (newChecked) =>
+    setRefereFriendChecked(newChecked);
 
-  //   const submitGiveAway = () => {
-  //     let _data = {
-  //       valid_from_date: startDate && moment(startDate).format("YYYY-MM-DD"),
-  //       valid_to_date: endDate && moment(endDate).format("YYYY-MM-DD"),
-  //       name: longName,
-  //       code: shortName,
-  //       valid_from_time: startTime && moment(startTime).format("HH:mm"),
-  //       valid_to_time: endTime && moment(endTime).format("HH:mm"),
-  //     };
+  const submitGiveAway = () => {
+    let _data = {
+      valid_from_date: startDate && moment(startDate).format("YYYY-MM-DD"),
+      valid_to_date: endDate && moment(endDate).format("YYYY-MM-DD"),
+      name: longName,
+      code: shortName,
+      valid_from_time: startTime && moment(startTime).format("HH:mm"),
+      valid_to_time: endTime && moment(endTime).format("HH:mm"),
+    };
 
-  //     let isValidate = _data && validateData(_data);
+    let isValidate = _data && validateData(_data);
 
-  //     isValidate.length === 0 &&
-  //       fetch("https://l1.gotomy.dev/shopify/api/v1/public/giveaways", {
-  //         method: "POST",
-  //         body: JSON.stringify(_data),
-  //         // mode:"no-cors",
-  //         headers: {
-  //           "Content-type": "application/json",
-  //         },
-  //       })
-  //         .then((response) => {
-  //           //   redirect.dispatch(Redirect.Action.APP, "/giveawaylist");
-  //         })
-  //         .catch((err) => console.log(err));
-  //   };
+    console.log(isValidate, "isValidate");
 
-  //   const validateData = (data) => {
-  //     let array = [];
-  //     let _validations = validations;
+    isValidate.length === 0 &&
+      fetch("https://l1.gotomy.dev/shopify/api/v1/public/giveaways", {
+        method: "POST",
+        body: JSON.stringify(_data),
+        // mode:"no-cors",
+        headers: {
+          "Content-type": "application/json",
+        },
+      })
+        .then((response) => {
+          redirect.dispatch(Redirect.Action.APP, "/giveawaylist");
+        })
+        .catch((err) => console.log(err));
+  };
 
-  //     Object.keys(data).forEach((key) => {
-  //       if (data[key] === "") {
-  //         array.push(key);
-  //         _validations[key] = false;
-  //       }
-  //     });
-  //     setValidations({ ...validations, validations: _validations });
-  //     return array;
-  //   };
+  const validateData = (data) => {
+    let array = [];
+    let _validations = validations;
+
+    Object.keys(data).forEach((key) => {
+      if (data[key] === "") {
+        array.push(key);
+        _validations[key] = false;
+      }
+    });
+    setValidations({ ...validations, validations: _validations });
+    return array;
+  };
 
   return (
     <Page
-      //   primaryAction={{ content: "Save", onAction: () => submitGiveAway() }}
+      primaryAction={{ content: "Save", onAction: () => submitGiveAway() }}
       divider
       fullWidth
     >
@@ -146,7 +148,7 @@ export const AddGiveAway = () => {
             <Card sectioned>
               <TextStyle variation="strong">Long name</TextStyle>
               <TextField
-                error={validations?.name === false && "This field required"}
+                error={validations.name === false && "This field required"}
                 value={longName}
                 onChange={(value) => {
                   setLongName(value);
@@ -159,7 +161,7 @@ export const AddGiveAway = () => {
               <br />
               <TextStyle variation="strong">Short Name</TextStyle>
               <TextField
-                error={validations?.code === false && "This field required"}
+                error={validations.code === false && "This field required"}
                 value={shortName}
                 id="shortName"
                 type="text"
@@ -183,115 +185,115 @@ export const AddGiveAway = () => {
               <Stack>
                 <Stack vertical={true}>
                   <TextStyle variation="strong">Start Date</TextStyle>
-                  {/* <div className="datepicker"> */}
-                  <DatePicker
-                    // id="startDate"
-                    required
-                    className="icons8-time"
-                    placeholderText="Select start date"
-                    //   selected={startDate}
-                    //   onChange={(date) => {
-                    //     setStartDate(date);
-                    //     setValidations({
-                    //       ...validations,
-                    //       valid_from_date: true,
-                    //     });
-                    //   }}
-                  />
-                  {/* {!validations?.valid_from_date && (
+                  <div className="datepicker">
+                    {/* <DatePicker
+                      id="startDate"
+                      required
+                      className="icons8-time"
+                      placeholderText="Select start date"
+                      selected={startDate}
+                      onChange={(date) => {
+                        setStartDate(date);
+                        setValidations({
+                          ...validations,
+                          valid_from_date: true,
+                        });
+                      }}
+                    /> */}
+                    {!validations.valid_from_date && (
                       <InlineError
                         message="This field name is required"
                         fieldID="startDate"
                       />
-                    )} */}
-                  {/* </div> */}
+                    )}
+                  </div>
                 </Stack>
 
                 <Stack vertical={true}>
                   <TextStyle variation="strong">Start Time</TextStyle>
-                  {/* <div className="timerpicker"> */}
-                  <DatePicker
-                    // id="startTime"
-                    showTimeSelect
-                    showTimeSelectOnly
-                    timeIntervals={15}
-                    timeCaption="Time"
-                    // className={!startDate && "disbaled"}
-                    // disabled={!startDate ? true : false}
-                    dateFormat="h:mm"
-                    placeholderText="Select start time"
-                    //   selected={startTime}
-                    //   onChange={(date) => {
-                    //     setStartTime(date);
-                    //     setValidations({
-                    //       ...validations,
-                    //       valid_from_time: true,
-                    //     });
-                    //   }}
-                  />
-                  {/* </div> */}
-                  {/* {!validations?.valid_from_time && (
+                  <div className="timerpicker">
+                    {/* <DatePicker
+                      id="startTime"
+                      showTimeSelect
+                      showTimeSelectOnly
+                      timeIntervals={15}
+                      timeCaption="Time"
+                      className={!startDate && "disbaled"}
+                      disabled={!startDate ? true : false}
+                      dateFormat="h:mm"
+                      placeholderText="Select start time"
+                      selected={startTime}
+                      onChange={(date) => {
+                        setStartTime(date);
+                        setValidations({
+                          ...validations,
+                          valid_from_time: true,
+                        });
+                      }}
+                    /> */}
+                  </div>
+                  {!validations.valid_from_time && (
                     <InlineError
                       message="This field name is required"
                       fieldID="startTime"
                     />
-                  )} */}
+                  )}
                 </Stack>
               </Stack>
               <br />
               <Stack>
                 <Stack vertical={true}>
                   <TextStyle variation="strong">End Date</TextStyle>
-                  {/* <div className="datepicker"> */}
-                  <DatePicker
-                    // id="endDate"
-                    required
-                    placeholderText="Select end date"
-                    //   selected={endDate}
-                    //   onChange={(date) => {
-                    //     setEndDate(date);
-                    //     setValidations({ ...validations, valid_to_date: true });
-                    //   }}
-                  />
-                  {/* {!validations?.valid_to_date && (
+                  <div className="datepicker">
+                    {/* <DatePicker
+                      id="endDate"
+                      required
+                      placeholderText="Select end date"
+                      selected={endDate}
+                      onChange={(date) => {
+                        setEndDate(date);
+                        setValidations({ ...validations, valid_to_date: true });
+                      }}
+                    /> */}
+                    {!validations.valid_to_date && (
                       <InlineError
                         message="This field name is required"
                         fieldID="endDate"
                       />
-                    )} */}
-                  {/* </div> */}
+                    )}
+                  </div>
                 </Stack>
 
                 <Stack vertical={true}>
                   <TextStyle variation="strong">End Time</TextStyle>
-                  {/* <div className="timerpicker"> */}
-                  <DatePicker
-                    // id="endTime"
-                    showTimeSelect
-                    showTimeSelectOnly
-                    timeIntervals={15}
-                    // className={!startDate && "disbaled"}
-                    timeCaption="Time"
-                    // disabled={!endDate ? true : false}
-                    dateFormat="h:mm"
-                    placeholderText="Select end time"
-                    //   selected={endTime}
-                    //   onChange={(date) => {
-                    //     setEndTime(date);
-                    //     setValidations({ ...validations, valid_to_time: true });
-                    //   }}
-                  />
-                  {/* </div> */}
-                  {/* {!validations?.valid_to_time && (
+                  <div className="timerpicker">
+                    {/* <DatePicker
+                      id="endTime"
+                      showTimeSelect
+                      showTimeSelectOnly
+                      timeIntervals={15}
+                      className={!startDate && "disbaled"}
+                      timeCaption="Time"
+                      disabled={!endDate ? true : false}
+                      dateFormat="h:mm"
+                      placeholderText="Select end time"
+                      selected={endTime}
+                      onChange={(date) => {
+                        setEndTime(date);
+                        setValidations({ ...validations, valid_to_time: true });
+                      }}
+                    /> */}
+                  </div>
+                  {!validations.valid_to_time && (
                     <InlineError
                       message="This field name is required"
                       fieldID="endTime"
                     />
-                  )} */}
+                  )}
                 </Stack>
               </Stack>
               <br />
-              {/* <Stack>
+              <Stack>
                 <Stack.Item fill>
                   <TextStyle variation="strong">Time Zone</TextStyle>
                   <TimezoneSelect
@@ -299,12 +301,11 @@ export const AddGiveAway = () => {
                     onChange={setSelectedTimezone}
                   />
                 </Stack.Item>
-              </Stack> */}
+              </Stack>
             </Card>
           </FormLayout>
         </Layout.AnnotatedSection>
 
-        {/* 
         <Layout.AnnotatedSection
           title="Entry Information"
           description="Shopify and your customers will use this information to contact you."
@@ -346,8 +347,8 @@ export const AddGiveAway = () => {
               </Stack>
             </Card>
           </FormLayout>
-        </Layout.AnnotatedSection> */}
-        {/* 
+        </Layout.AnnotatedSection>
+
         <Layout.AnnotatedSection
           title="Time Bonus Entry Information"
           description="Shopify and your customers will use this information to contact you."
@@ -377,8 +378,8 @@ export const AddGiveAway = () => {
               <br />
             </Card>
           </FormLayout>
-        </Layout.AnnotatedSection> */}
-        {/* 
+        </Layout.AnnotatedSection>
+
         <Layout.AnnotatedSection
           title="Special Bonus Entry Information"
           description="Shopify and your customers will use this information to contact you."
@@ -445,13 +446,11 @@ export const AddGiveAway = () => {
             </Card>
           </FormLayout>
         </Layout.AnnotatedSection>
-    
-     */}
       </Layout>
       <br />
       <br />
 
-      {/* <Stack>
+      <Stack>
         <Stack.Item fill>
           <Heading></Heading>
         </Stack.Item>
@@ -460,7 +459,7 @@ export const AddGiveAway = () => {
             Save
           </Button>
         </Stack.Item>
-      </Stack> */}
+      </Stack>
       <br />
       <br />
     </Page>
