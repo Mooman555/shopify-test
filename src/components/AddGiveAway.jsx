@@ -218,7 +218,7 @@ export const AddGiveAway = () => {
                       timeCaption="Time"
                       className={!startDate && "disbaled"}
                       disabled={!startDate ? true : false}
-                      dateFormat="h:mm"
+                      //   dateFormat="h:mm"
                       placeholderText="Select start time"
                       selected={startTime}
                       onChange={(date) => {
@@ -273,7 +273,7 @@ export const AddGiveAway = () => {
                       className={!startDate && "disbaled"}
                       timeCaption="Time"
                       disabled={!endDate ? true : false}
-                      dateFormat="h:mm"
+                      //   dateFormat="h:mm"
                       placeholderText="Select end time"
                       selected={endTime}
                       onChange={(date) => {
