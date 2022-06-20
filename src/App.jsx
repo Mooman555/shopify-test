@@ -13,7 +13,7 @@ import { Redirect } from "@shopify/app-bridge/actions";
 import { AppProvider as PolarisProvider } from "@shopify/polaris";
 import translations from "@shopify/polaris/locales/en.json";
 import { BrowserRouter } from "react-router-dom";
-import Link from "./Link";
+// import Link from "./Link";
 // import Routes from "./Routes";
 import "@shopify/polaris/build/esm/styles.css";
 
@@ -31,7 +31,7 @@ export default function App() {
             forceRedirect: true,
           }}
         >
-          <MyProvider linkComponent={Link}>
+          <MyProvider>
             {/* <p>Hello</p> */}
             {/* <HomePage /> */}
             {/* <Routes /> */}
