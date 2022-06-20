@@ -34,8 +34,8 @@ export default function App() {
           <MyProvider linkComponent={Link}>
             {/* <p>Hello</p> */}
             {/* <HomePage /> */}
-            <Routes />
-            {/* <AddGiveAway /> */}
+            {/* <Routes /> */}
+            <AddGiveAway />
           </MyProvider>
         </AppBridgeProvider>
       </PolarisProvider>
