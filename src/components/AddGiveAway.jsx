@@ -138,7 +138,7 @@ export const AddGiveAway = () => {
       fullWidth
     >
       <Layout>
-        {/* <Layout.AnnotatedSection
+        <Layout.AnnotatedSection
           title="Contest Name"
           description="Shopify and your customers will use this information to contact you."
         >
@@ -172,8 +172,8 @@ export const AddGiveAway = () => {
               />
             </Card>
           </FormLayout>
-        </Layout.AnnotatedSection> */}
-
+        </Layout.AnnotatedSection>
+        {/* 
         <Layout.AnnotatedSection
           title="Date Information "
           description="This address will appear on your invoices."
@@ -291,7 +291,7 @@ export const AddGiveAway = () => {
                 </Stack>
               </Stack>
               <br />
-              {/* <Stack>
+              <Stack>
                 <Stack.Item fill>
                   <TextStyle variation="strong">Time Zone</TextStyle>
                   <TimezoneSelect
@@ -299,10 +299,12 @@ export const AddGiveAway = () => {
                     onChange={setSelectedTimezone}
                   />
                 </Stack.Item>
-              </Stack> */}
+              </Stack>
             </Card>
           </FormLayout>
         </Layout.AnnotatedSection>
+
+         */}
         {/* 
         <Layout.AnnotatedSection
           title="Entry Information"
