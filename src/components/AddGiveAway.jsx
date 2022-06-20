@@ -148,7 +148,7 @@ export const AddGiveAway = () => {
             <Card sectioned>
               <TextStyle variation="strong">Long name</TextStyle>
               <TextField
-                error={validations.name === false && "This field required"}
+                error={validations?.name === false && "This field required"}
                 value={longName}
                 onChange={(value) => {
                   setLongName(value);
@@ -161,7 +161,7 @@ export const AddGiveAway = () => {
               <br />
               <TextStyle variation="strong">Short Name</TextStyle>
               <TextField
-                error={validations.code === false && "This field required"}
+                error={validations?.code === false && "This field required"}
                 value={shortName}
                 id="shortName"
                 type="text"
@@ -255,7 +255,7 @@ export const AddGiveAway = () => {
                         setValidations({ ...validations, valid_to_date: true });
                       }}
                     />
-                    {!validations.valid_to_date && (
+                    {!validations?.valid_to_date && (
                       <InlineError
                         message="This field name is required"
                         fieldID="endDate"
