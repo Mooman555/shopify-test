@@ -145,3 +145,37 @@
 .react-clock__second-hand__body {
   background-color: red;
 }
+
+.align-right {
+  width: 100%;
+  text-align: right;
+  right: 0;
+  left: 95;
+}
+
+.time-wrapper {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.time-wrapper > .Polaris-Stack {
+  width: 15vw;
+}
+
+#startTime {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid gray;
+  border-radius: 50px;
+}
+
+#endTime {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid gray;
+  border-radius: 50px;
+}
+
+#startTimeStack {
+  width: 15vw;
+}

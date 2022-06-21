@@ -228,7 +228,8 @@ export const AddGiveAway = ({ setToggle }) => {
                     )}
                   </div>
                 </Stack>
-
+              </Stack>
+              <div className="time-wrapper">
                 <Stack vertical={true}>
                   <TextStyle variation="strong">Select Start Time</TextStyle>
                   {/* <div className="timerpicker"> */}
@@ -251,14 +252,16 @@ export const AddGiveAway = ({ setToggle }) => {
 
                 <Stack vertical={true}>
                   <TextStyle variation="strong">Select End Time</TextStyle>
+                  <div>
+                    <input
+                      type="time"
+                      name="endTime"
+                      value={endTime}
+                      onChange={(e) => setEndTime(e.target.value)}
+                      id="endTime"
+                    />
+                  </div>
 
-                  <input
-                    type="time"
-                    name="endTime"
-                    value={endTime}
-                    onChange={(e) => setEndTime(e.target.value)}
-                    id="endTime"
-                  />
                   {/* </div> */}
                   {/* {!validations.valid_from_time && (
                     <InlineError
@@ -267,7 +270,7 @@ export const AddGiveAway = ({ setToggle }) => {
                     />
                   )} */}
                 </Stack>
-              </Stack>
+              </div>
               <br />
               <br />
               {/* <Stack>
