@@ -211,8 +211,6 @@ export const AddGiveAway = ({ setToggle }) => {
                       year={year}
                       onChange={(data) => {
                         setDates(data);
-                        //  console.log(data,"data")
-                        //   setSelectedDates(data)
                       }}
                       onMonthChange={handleMonthChange}
                       selected={selectedDates}
