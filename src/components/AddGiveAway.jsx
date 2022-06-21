@@ -206,20 +206,6 @@ export const AddGiveAway = ({ setToggle }) => {
                 <Stack vertical={true}>
                   <TextStyle variation="strong">Select Date</TextStyle>
                   <div className="datepicker">
-                    {/* <DatePicker
-                      id="startDate"
-                      required
-                      className="icons8-time"
-                      placeholderText="Select start date"
-                      selected={startDate}
-                      onChange={(date) => {
-                        setStartDate(date);
-                        setValidations({
-                          ...validations,
-                          valid_from_date: true,
-                        });
-                      }}
-                    /> */}
                     <DatePicker
                       month={month}
                       year={year}
