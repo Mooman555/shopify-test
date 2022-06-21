@@ -243,36 +243,6 @@ export const AddGiveAway = ({ setToggle }) => {
                 </Stack>
               </Stack>
               <br />
-              <Stack>
-                {/* 
-                <Stack vertical={true}>
-                  <TextStyle variation="strong">End Time</TextStyle>
-                  <div className="timerpicker">
-                    <DatePicker
-                      id="endTime"
-                      showTimeSelect
-                      showTimeSelectOnly
-                      timeIntervals={15}
-                      className={!startDate && "disbaled"}
-                      timeCaption="Time"
-                      disabled={!endDate ? true : false}
-                      dateFormat="h:mm"
-                      placeholderText="Select end time"
-                      selected={endTime}
-                      onChange={(date) => {
-                        setEndTime(date);
-                        setValidations({ ...validations, valid_to_time: true });
-                      }}
-                    />
-                  </div>
-                  {!validations.valid_to_time && (
-                    <InlineError
-                      message="This field name is required"
-                      fieldID="endTime"
-                    />
-                  )}
-                </Stack> */}
-              </Stack>
               <br />
               {/* <Stack>
                 <Stack.Item fill>
