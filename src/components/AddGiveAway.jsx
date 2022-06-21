@@ -14,6 +14,7 @@ import {
   InlineError,
   DatePicker,
 } from "@shopify/polaris";
+import TimePicker from "react-time-picker/dist/entry.nostyle";
 import moment from "moment";
 // import DatePicker from "react-datepicker";
 // import TimezoneSelect from "react-timezone-select";
@@ -55,6 +56,7 @@ export const AddGiveAway = ({ setToggle }) => {
   const [referFriendchecked, setRefereFriendChecked] = useState(false);
 
   const [referFriendLink, setReferFriendLink] = useState(false);
+  const [value, onChange] = useState("10:00");
 
   const [validations, setValidations] = useState({
     valid_from_date: true,
@@ -229,7 +231,9 @@ export const AddGiveAway = ({ setToggle }) => {
 
                 <Stack vertical={true}>
                   <TextStyle variation="strong">Select Time</TextStyle>
-                  <div className="timerpicker"></div>
+                  {/* <div className="timerpicker"> */}
+                  <TimePicker onChange={onChange} value={value} />
+                  {/* </div> */}
                   {!validations.valid_from_time && (
                     <InlineError
                       message="This field name is required"
