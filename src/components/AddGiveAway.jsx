@@ -12,6 +12,7 @@ import {
   Heading,
   Checkbox,
   InlineError,
+  DatePicker,
 } from "@shopify/polaris";
 import moment from "moment";
 // import DatePicker from "react-datepicker";
@@ -24,12 +25,15 @@ import { Redirect } from "@shopify/app-bridge/actions";
 export const AddGiveAway = ({ setToggle }) => {
   const app = useAppBridge();
   const redirect = Redirect.create(app);
-  //   const [{ month, year }, setDate] = useState({ month: 1, year: 2018 });
-  //   const [selectedDates, setSelectedDates] = useState({
-  //     start: new Date("Wed Feb 07 2018 00:00:00 GMT-0500 (EST)"),
-  //     end: new Date("Wed Feb 07 2018 00:00:00 GMT-0500 (EST)"),
-  //   });
-
+  const [{ month, year }, setDate] = useState({
+    month: new Date().getMonth(),
+    year: new Date().getFullYear(),
+  });
+  var date = new Date();
+  const [selectedDates, setSelectedDates] = useState({
+    start: new Date(),
+    end: new Date(date.getTime() + 86400000),
+  });
   const [longName, setLongName] = useState("");
   const [shortName, setShortName] = useState("");
   const [orderMessage, setOrderMessage] = useState("");
@@ -38,8 +42,8 @@ export const AddGiveAway = ({ setToggle }) => {
   const [accountBonusEntries, setAccountBonusEntries] = useState("");
   const [friendBonusEntries, setFriendBonusEntries] = useState("");
 
-  //   const [startDate, setStartDate] = useState("");
-  //   const [endDate, setEndDate] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
   //   const [startTime, setStartTime] = useState("");
   //   const [endTime, setEndTime] = useState("");
 
@@ -90,10 +94,24 @@ export const AddGiveAway = ({ setToggle }) => {
   const handleFriendRefereChange = (newChecked) =>
     setRefereFriendChecked(newChecked);
 
+  const handleMonthChange = (month, year) => {
+    console.log(month, year, "month,year");
+    setDate({ month, year });
+  };
+
+  const setDates = (dates) => {
+    let { start, end } = dates;
+    start = moment(start).format("YYYY-MM-DD");
+    end = moment(end).format("YYYY-MM-DD");
+    setStartDate(start);
+    setEndDate(end);
+    setSelectedDates(dates);
+  };
+
   const submitGiveAway = () => {
     let _data = {
-      valid_from_date: moment(new Date()).format("YYYY-MM-DD"),
-      valid_to_date: moment(new Date()).format("YYYY-MM-DD"),
+      valid_from_date: startDate,
+      valid_to_date: endDate,
       name: longName,
       code: shortName,
       valid_from_time: moment(new Date()).format("HH:mm"),
@@ -186,7 +204,7 @@ export const AddGiveAway = ({ setToggle }) => {
             <Card sectioned>
               <Stack>
                 <Stack vertical={true}>
-                  <TextStyle variation="strong">Start Date</TextStyle>
+                  <TextStyle variation="strong">Select Date</TextStyle>
                   <div className="datepicker">
                     {/* <DatePicker
                       id="startDate"
@@ -202,6 +220,20 @@ export const AddGiveAway = ({ setToggle }) => {
                         });
                       }}
                     /> */}
+                    <DatePicker
+                      month={month}
+                      year={year}
+                      onChange={(data) => {
+                        setDates(data);
+                        //  console.log(data,"data")
+                        //   setSelectedDates(data)
+                      }}
+                      onMonthChange={handleMonthChange}
+                      selected={selectedDates}
+                      multiMonth
+                      allowRange
+                    />
+
                     {!validations.valid_from_date && (
                       <InlineError
                         message="This field name is required"
@@ -212,7 +244,7 @@ export const AddGiveAway = ({ setToggle }) => {
                 </Stack>
 
                 <Stack vertical={true}>
-                  <TextStyle variation="strong">Start Time</TextStyle>
+                  <TextStyle variation="strong">Select Time</TextStyle>
                   <div className="timerpicker">
                     {/* <DatePicker
                       id="startTime"
@@ -244,10 +276,10 @@ export const AddGiveAway = ({ setToggle }) => {
               </Stack>
               <br />
               <Stack>
-                <Stack vertical={true}>
+                {/* <Stack vertical={true}>
                   <TextStyle variation="strong">End Date</TextStyle>
                   <div className="datepicker">
-                    {/* <DatePicker
+                    <DatePicker
                       id="endDate"
                       required
                       placeholderText="Select end date"
@@ -256,7 +288,7 @@ export const AddGiveAway = ({ setToggle }) => {
                         setEndDate(date);
                         setValidations({ ...validations, valid_to_date: true });
                       }}
-                    /> */}
+                    />
                     {!validations.valid_to_date && (
                       <InlineError
                         message="This field name is required"
@@ -269,7 +301,7 @@ export const AddGiveAway = ({ setToggle }) => {
                 <Stack vertical={true}>
                   <TextStyle variation="strong">End Time</TextStyle>
                   <div className="timerpicker">
-                    {/* <DatePicker
+                    <DatePicker
                       id="endTime"
                       showTimeSelect
                       showTimeSelectOnly
@@ -284,7 +316,7 @@ export const AddGiveAway = ({ setToggle }) => {
                         setEndTime(date);
                         setValidations({ ...validations, valid_to_time: true });
                       }}
-                    /> */}
+                    />
                   </div>
                   {!validations.valid_to_time && (
                     <InlineError
@@ -292,7 +324,7 @@ export const AddGiveAway = ({ setToggle }) => {
                       fieldID="endTime"
                     />
                   )}
-                </Stack>
+                </Stack> */}
               </Stack>
               <br />
               {/* <Stack>
