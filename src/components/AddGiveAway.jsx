@@ -56,7 +56,7 @@ export const AddGiveAway = ({ setToggle }) => {
   const [referFriendchecked, setRefereFriendChecked] = useState(false);
 
   const [referFriendLink, setReferFriendLink] = useState(false);
-  // const [value, onChange] = useState("10:00");
+  const [value, onChange] = useState("10:00");
 
   const [validations, setValidations] = useState({
     valid_from_date: true,
