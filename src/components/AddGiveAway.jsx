@@ -244,28 +244,7 @@ export const AddGiveAway = ({ setToggle }) => {
               </Stack>
               <br />
               <Stack>
-                {/* <Stack vertical={true}>
-                  <TextStyle variation="strong">End Date</TextStyle>
-                  <div className="datepicker">
-                    <DatePicker
-                      id="endDate"
-                      required
-                      placeholderText="Select end date"
-                      selected={endDate}
-                      onChange={(date) => {
-                        setEndDate(date);
-                        setValidations({ ...validations, valid_to_date: true });
-                      }}
-                    />
-                    {!validations.valid_to_date && (
-                      <InlineError
-                        message="This field name is required"
-                        fieldID="endDate"
-                      />
-                    )}
-                  </div>
-                </Stack>
-
+                {/* 
                 <Stack vertical={true}>
                   <TextStyle variation="strong">End Time</TextStyle>
                   <div className="timerpicker">
