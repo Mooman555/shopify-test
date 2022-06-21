@@ -14,7 +14,7 @@ import {
   InlineError,
   DatePicker,
 } from "@shopify/polaris";
-// import TimePicker from "react-time-picker/dist/entry.nostyle";
+import TimePicker from "react-time-picker/dist/entry.nostyle";
 import moment from "moment";
 // import DatePicker from "react-datepicker";
 // import TimezoneSelect from "react-timezone-select";
@@ -232,7 +232,7 @@ export const AddGiveAway = ({ setToggle }) => {
                 <Stack vertical={true}>
                   <TextStyle variation="strong">Select Time</TextStyle>
                   {/* <div className="timerpicker"> */}
-                  {/* <TimePicker onChange={onChange} value={value} /> */}
+                  <TimePicker onChange={onChange} value={value} />
                   {/* </div> */}
                   {!validations.valid_from_time && (
                     <InlineError
