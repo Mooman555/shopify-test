@@ -14,7 +14,7 @@ import {
   InlineError,
   DatePicker,
 } from "@shopify/polaris";
-import TimePicker from "react-time-picker/dist/entry.nostyle";
+// import TimePicker from "react-time-picker/dist/entry.nostyle";
 import moment from "moment";
 // import DatePicker from "react-datepicker";
 // import TimezoneSelect from "react-timezone-select";
@@ -45,8 +45,8 @@ export const AddGiveAway = ({ setToggle }) => {
 
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
-  //   const [startTime, setStartTime] = useState("");
-  //   const [endTime, setEndTime] = useState("");
+  const [startTime, setStartTime] = useState("08:00");
+  const [endTime, setEndTime] = useState("12:00");
 
   //   const [selectedTimezone, setSelectedTimezone] = useState({});
   const [selected, setSelected] = useState("single");
@@ -116,8 +116,8 @@ export const AddGiveAway = ({ setToggle }) => {
       valid_to_date: endDate,
       name: longName,
       code: shortName,
-      valid_from_time: moment(new Date()).format("HH:mm"),
-      valid_to_time: moment(new Date()).format("HH:mm"),
+      valid_from_time: startTime,
+      valid_to_time: endTime,
     };
 
     let isValidate = _data && validateData(_data);
@@ -230,16 +230,42 @@ export const AddGiveAway = ({ setToggle }) => {
                 </Stack>
 
                 <Stack vertical={true}>
-                  <TextStyle variation="strong">Select Time</TextStyle>
+                  <TextStyle variation="strong">Select Start Time</TextStyle>
                   {/* <div className="timerpicker"> */}
-                  <TimePicker onChange={onChange} value={value} />
+                  {/* <TimePicker onChange={onChange} value={value} /> */}
+                  <input
+                    type="time"
+                    name="startTime"
+                    value={startTime}
+                    onChange={(e) => setStartTime(e.target.value)}
+                    id="startTime"
+                  />
                   {/* </div> */}
-                  {!validations.valid_from_time && (
+                  {/* {!validations.valid_from_time && (
                     <InlineError
                       message="This field name is required"
                       fieldID="startTime"
                     />
-                  )}
+                  )} */}
+                </Stack>
+
+                <Stack vertical={true}>
+                  <TextStyle variation="strong">Select End Time</TextStyle>
+
+                  <input
+                    type="time"
+                    name="endTime"
+                    value={endTime}
+                    onChange={(e) => setEndTime(e.target.value)}
+                    id="endTime"
+                  />
+                  {/* </div> */}
+                  {/* {!validations.valid_from_time && (
+                    <InlineError
+                      message="This field name is required"
+                      fieldID="startTime"
+                    />
+                  )} */}
                 </Stack>
               </Stack>
               <br />
