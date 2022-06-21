@@ -229,27 +229,7 @@ export const AddGiveAway = ({ setToggle }) => {
 
                 <Stack vertical={true}>
                   <TextStyle variation="strong">Select Time</TextStyle>
-                  <div className="timerpicker">
-                    {/* <DatePicker
-                      id="startTime"
-                      showTimeSelect
-                      showTimeSelectOnly
-                      timeIntervals={15}
-                      timeCaption="Time"
-                      className={!startDate && "disbaled"}
-                      disabled={!startDate ? true : false}
-                      dateFormat="h:mm"
-                      placeholderText="Select start time"
-                      selected={startTime}
-                      onChange={(date) => {
-                        setStartTime(date);
-                        setValidations({
-                          ...validations,
-                          valid_from_time: true,
-                        });
-                      }}
-                    /> */}
-                  </div>
+                  <div className="timerpicker"></div>
                   {!validations.valid_from_time && (
                     <InlineError
                       message="This field name is required"
