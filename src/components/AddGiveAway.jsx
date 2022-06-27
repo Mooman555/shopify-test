@@ -49,7 +49,7 @@ export const AddGiveAway = ({ setToggle }) => {
   const [endTime, setEndTime] = useState("12:00");
 
   //   const [selectedTimezone, setSelectedTimezone] = useState({});
-  const [selected, setSelected] = useState("single");
+  const [selected, setSelected] = useState(1);
   const [multiplierSelected, setMultiplierSelect] = useState("1x");
   const [timeToObtainBonus, setTimeToObtainBonus] = useState("");
   const [checked, setChecked] = useState(false);
@@ -57,6 +57,19 @@ export const AddGiveAway = ({ setToggle }) => {
 
   const [referFriendLink, setReferFriendLink] = useState(false);
   const [value, onChange] = useState("10:00");
+
+  const [showChild, setShowChild] = useState(false);
+
+  const [formValues, setFormValues] = useState([
+    {
+      childLongName: "",
+      childShortName: "",
+      childStartDate: "",
+      childEndDate: "",
+      childStartTime: "",
+      childEndTime: "",
+    },
+  ]);
 
   const [validations, setValidations] = useState({
     valid_from_date: true,
@@ -68,9 +81,9 @@ export const AddGiveAway = ({ setToggle }) => {
   });
 
   const options = [
-    { label: "Single", value: "single" },
-    { label: "Dual", value: "dual" },
-    { label: "Triple", value: "triple" },
+    { label: "Single", value: "1" },
+    { label: "Dual", value: "2" },
+    { label: "Triple", value: "3" },
   ];
 
   const MultiplierOptions = [
@@ -85,7 +98,29 @@ export const AddGiveAway = ({ setToggle }) => {
     { label: "45 Minutes", value: "45" },
   ];
 
-  const handleSelectChange = (value) => setSelected(value);
+  const handleSelectChange = (value) => {
+    if (value == 1) {
+      do {
+        formValues.pop();
+      } while (formValues.length > 2);
+      setShowChild(false);
+      setSelected(value);
+    } else if (value == 2) {
+      if (formValues.length > 1) {
+        formValues.pop();
+      }
+      setSelected(value);
+      setShowChild(true);
+    } else if (value == 3) {
+      if (formValues.length >= 2) {
+        formValues.pop();
+        formValues.pop();
+      }
+      setSelected(value);
+      addFormFields();
+      setShowChild(true);
+    }
+  };
 
   const handleMultiplierSelectChange = (value) => setMultiplierSelect(value);
 
@@ -109,6 +144,37 @@ export const AddGiveAway = ({ setToggle }) => {
     setEndDate(end);
     setSelectedDates(dates);
   };
+
+  let handleChangeFields = (i, e) => {
+    let newFormValues = [...formValues];
+    newFormValues[i][e.target.name] = e.target.value;
+    setFormValues(newFormValues);
+  };
+
+  let addFormFields = () => {
+    setFormValues([
+      ...formValues,
+      {
+        childLongName: "",
+        childShortName: "",
+        childStartDate: "",
+        childEndDate: "",
+        childStartTime: "",
+        childEndTime: "",
+      },
+    ]);
+  };
+
+  // let removeFormFields = (i) => {
+  //     let newFormValues = [...formValues];
+  //     newFormValues.splice(i, 1);
+  //     setFormValues(newFormValues)
+  // }
+
+  // let handleSubmit = (event) => {
+  //     event.preventDefault();
+  //     alert(JSON.stringify(formValues));
+  // }
 
   const submitGiveAway = () => {
     let _data = {
@@ -325,6 +391,156 @@ export const AddGiveAway = ({ setToggle }) => {
                   <Button primary={true}>Add Schedule Bonus Period</Button>
                 </Stack.Item>
               </Stack>
+
+              <br />
+
+              {showChild &&
+                formValues.map((element, index) => (
+                  <div className="form-inline" key={index}>
+                    <FormLayout>
+                      <Card sectioned>
+                        <TextStyle variation="strong">Long name</TextStyle>
+                        <TextField
+                          //  error={validations.name === false && "This field required"}
+                          value={element.childLongName}
+                          name="childLongName"
+                          //  onChange={(value) => {
+                          //    setLongName(value);
+                          //   //  setValidations({ ...validations, name: true });
+                          //  }}
+                          onChange={(e) => handleChangeFields(index, e)}
+                          placeholder="DCG #55 - Widebody Supra + $40,000"
+                          autoComplete="off"
+                        />
+
+                        <br />
+                        <TextStyle variation="strong">Short Name</TextStyle>
+                        <TextField
+                          //  error={validations.code === false && "This field required"}
+                          name="childShortName"
+                          value={element.childShortName}
+                          onChange={(e) => handleChangeFields(index, e)}
+                          //  id="shortName"
+                          type="text"
+                          placeholder="DCGCG"
+                          //  onChange={(value) => {
+                          //    setShortName(value);
+                          //   //  setValidations({ ...validations, code: true });
+                          //  }}
+                          autoComplete="off"
+                        />
+                      </Card>
+                    </FormLayout>
+
+                    <FormLayout>
+                      <br />
+                      <Card sectioned>
+                        <Stack>
+                          <Stack vertical={true}>
+                            <TextStyle variation="strong">
+                              Select Date
+                            </TextStyle>
+                            <div className="datepicker">
+                              <DatePicker
+                                month={month}
+                                year={year}
+                                onChange={(e) => handleChangeFields(index, e)}
+                                // onChange={(data) => {
+                                //   setDates(data);
+                                // }}
+                                onMonthChange={handleMonthChange}
+                                selected={selectedDates}
+                                multiMonth
+                                allowRange
+                              />
+
+                              {/* {!validations.valid_from_date && (
+                      <InlineError
+                        message="This field name is required"
+                        fieldID="startDate"
+                      />
+                    )} */}
+                            </div>
+                          </Stack>
+                        </Stack>
+                        <div className="time-wrapper">
+                          <Stack vertical={true}>
+                            <TextStyle variation="strong">
+                              Select Start Time
+                            </TextStyle>
+                            {/* <div className="timerpicker"> */}
+                            {/* <TimePicker onChange={onChange} value={value} /> */}
+                            <input
+                              type="time"
+                              name="childStartTime"
+                              value={element.childStartTime}
+                              // onChange={(e) => setStartTime(e.target.value)}
+                              onChange={(e) => handleChangeFields(index, e)}
+                              id="childStartTime"
+                            />
+                            {/* </div> */}
+                            {/* {!validations.valid_from_time && (
+                    <InlineError
+                      message="This field name is required"
+                      fieldID="startTime"
+                    />
+                  )} */}
+                          </Stack>
+
+                          <Stack vertical={true}>
+                            <TextStyle variation="strong">
+                              Select End Time
+                            </TextStyle>
+                            <div>
+                              <input
+                                type="time"
+                                name="childEndTime"
+                                value={element.childEndTime}
+                                // onChange={(e) => setEndTime(e.target.value)}
+                                onChange={(e) => handleChangeFields(index, e)}
+                                id="childEndTime"
+                              />
+                            </div>
+
+                            {/* </div> */}
+                            {/* {!validations.valid_from_time && (
+                    <InlineError
+                      message="This field name is required"
+                      fieldID="startTime"
+                    />
+                  )} */}
+                          </Stack>
+                        </div>
+                        <br />
+                        <br />
+                        {/* <Stack>
+                <Stack.Item fill>
+                  <TextStyle variation="strong">Time Zone</TextStyle>
+                  <TimezoneSelect
+                    value={selectedTimezone}
+                    onChange={setSelectedTimezone}
+                  />
+                </Stack.Item>
+              </Stack> */}
+                      </Card>
+                    </FormLayout>
+
+                    {/* <label>Name</label>
+                    <input type="text" name="name" value={element.name || ""} onChange={e => handleChange(index, e)} />
+                    <label>Email</label>
+                    <input type="text" name="email" value={element.email || ""} onChange={e => handleChange(index, e)} />
+                    {
+                      index ? 
+                        <button type="button"  className="button remove" onClick={() => removeFormFields(index)}>Remove</button> 
+                      : null
+                    } */}
+                  </div>
+                ))}
+
+              {/* 
+              {
+               selected > 1 && createInputs(selected) 
+              } */}
             </Card>
           </FormLayout>
         </Layout.AnnotatedSection>
