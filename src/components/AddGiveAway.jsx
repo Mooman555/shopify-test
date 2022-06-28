@@ -394,6 +394,8 @@ export const AddGiveAway = ({ setToggle }) => {
 
               <br />
 
+              {/* eslint-disable */}
+
               {showChild &&
                 formValues.map((element, index) => (
                   <div className="form-inline" key={index}>
@@ -513,34 +515,12 @@ export const AddGiveAway = ({ setToggle }) => {
                         </div>
                         <br />
                         <br />
-                        {/* <Stack>
-                <Stack.Item fill>
-                  <TextStyle variation="strong">Time Zone</TextStyle>
-                  <TimezoneSelect
-                    value={selectedTimezone}
-                    onChange={setSelectedTimezone}
-                  />
-                </Stack.Item>
-              </Stack> */}
                       </Card>
                     </FormLayout>
-
-                    {/* <label>Name</label>
-                    <input type="text" name="name" value={element.name || ""} onChange={e => handleChange(index, e)} />
-                    <label>Email</label>
-                    <input type="text" name="email" value={element.email || ""} onChange={e => handleChange(index, e)} />
-                    {
-                      index ? 
-                        <button type="button"  className="button remove" onClick={() => removeFormFields(index)}>Remove</button> 
-                      : null
-                    } */}
                   </div>
                 ))}
 
-              {/* 
-              {
-               selected > 1 && createInputs(selected) 
-              } */}
+              {/* eslint-enable */}
             </Card>
           </FormLayout>
         </Layout.AnnotatedSection>
