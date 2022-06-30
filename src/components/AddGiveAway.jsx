@@ -165,17 +165,6 @@ export const AddGiveAway = ({ setToggle }) => {
     ]);
   };
 
-  // let removeFormFields = (i) => {
-  //     let newFormValues = [...formValues];
-  //     newFormValues.splice(i, 1);
-  //     setFormValues(newFormValues)
-  // }
-
-  // let handleSubmit = (event) => {
-  //     event.preventDefault();
-  //     alert(JSON.stringify(formValues));
-  // }
-
   const submitGiveAway = () => {
     let _data = {
       valid_from_date: startDate,
