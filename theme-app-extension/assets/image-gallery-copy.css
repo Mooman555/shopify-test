@@ -94,32 +94,3 @@ image-popup .close-button {
   cursor: pointer;
   outline: inherit;
 }
-
-.text-right {
-  text-align: right !important;
-}
-
-.loyalty-div-wrapper {
-  display: flex !important;
-  justify-content: space-between !important;
-  margin-top: 7% !important;
-}
-
-.loyalty-pLabel {
-  font-weight: bold !important;
-}
-
-.loyalty-priceLabel {
-  font-weight: bold !important;
-}
-.loyalty-collection-priceLabel {
-  font-weight: bold !important;
-  margin-left: 3% !important;
-}
-
-.loyalty-collection-page {
-  display: flex !important;
-  /* justify-content: space-evenly !important; */
-  margin-top: 1% !important;
-  text-align: left !important;
-}

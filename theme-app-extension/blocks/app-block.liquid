@@ -1,19 +1,25 @@
-  {%- if page_title == "Your Shopping Cart" -%}
-  <p>{{ block.settings.heading}}</p>
-  <option>{{ cart.original_total_price| divided_by:100 }} Loyalty Points</option>
+ {%- if page_title == "Your Shopping Cart" -%}
+  <p class="text-right">{{ block.settings.heading}}</p>
+  <p class="text-right"><option class="loyalty-points">{{ cart.original_total_price| divided_by:100 }} Loyalty points</option></p>
+  {{ 'image-gallery.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'checkoutUi.js' | asset_url }}" defer></script>
+  <script src="{{ 'entryTypeCalculations.js' | asset_url }}" defer></script>
   {%- else -%}
-   <p>{{ block.settings.heading}}</p>
-   <option>{{ product.price| divided_by:100 }} Loyalty Points</option>
+   <p>{{ block.settings.heading }}</p>
+   <p> <option class="loyalty-points">{{ product.price| divided_by:100 }} Loyalty points per unit</option></p>
+   {{ 'image-gallery.css' | asset_url | stylesheet_tag }}
+   <script src="{{ 'checkoutUi.js' | asset_url }}" defer></script>
   {%- endif -%}
+
+  <script src="{{ 'productListCollections.js' | asset_url }}" defer></script>
 
 
 {% schema %}
   {
     "name": "Loyalty Point Block",
     "target": "section",
-    "stylesheet": "image-gallery.css",
     "javascript": "image-gallery.js",
-    "templates": ["product", "cart"],
+    "templates": ["index","product", "cart","collection"],
     "settings": [
       {
         "type": "text",
@@ -24,3 +30,4 @@
     ]
   }
 {% endschema %}
+
