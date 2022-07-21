@@ -29,6 +29,10 @@ export const AddGiveAway = ({ setToggle }) => {
   const app = useAppBridge();
   const redirect = Redirect.create(app);
 
+  {
+    /* eslint-disable */
+  }
+
   const [{ month, year }, setDate] = useState({
     month: new Date().getMonth(),
     year: new Date().getFullYear(),
@@ -465,8 +469,6 @@ export const AddGiveAway = ({ setToggle }) => {
 
               <br />
 
-              {/* eslint-disable */}
-
               {/**
                  Map Implementation for the sub-flash sales
                  */}
@@ -664,8 +666,6 @@ export const AddGiveAway = ({ setToggle }) => {
                   )}
                 </Box>
               )}
-
-              {/* eslint-enable */}
             </Card>
           </FormLayout>
         </Layout.AnnotatedSection>
@@ -770,6 +770,7 @@ export const AddGiveAway = ({ setToggle }) => {
       </Layout>
       <br />
       <br />
+      {/* eslint-enable */}
 
       <Stack>
         <Stack.Item fill>
