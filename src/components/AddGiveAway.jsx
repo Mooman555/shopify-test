@@ -323,7 +323,7 @@ export const AddGiveAway = ({ setToggle }) => {
       divider
       fullWidth
     >
-      {/* eslint-enable */}
+      {/* eslint-disable */}
 
       <Layout>
         <Layout.AnnotatedSection
@@ -764,7 +764,7 @@ export const AddGiveAway = ({ setToggle }) => {
       </Layout>
       <br />
       <br />
-      {/* eslint-disable */}
+      {/* eslint-enable */}
 
       <Stack>
         <Stack.Item fill>
