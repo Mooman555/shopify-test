@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+{
+  /* eslint-enable */
+}
 import Box from "@mui/material/Box";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
@@ -28,10 +31,6 @@ import { Redirect } from "@shopify/app-bridge/actions";
 export const AddGiveAway = ({ setToggle }) => {
   const app = useAppBridge();
   const redirect = Redirect.create(app);
-
-  {
-    /* eslint-disable */
-  }
 
   const [{ month, year }, setDate] = useState({
     month: new Date().getMonth(),
@@ -320,6 +319,9 @@ export const AddGiveAway = ({ setToggle }) => {
   const handleReset = () => {
     setActiveStep(0);
   };
+  {
+    /* eslint-disable */
+  }
 
   return (
     <Page
@@ -327,6 +329,8 @@ export const AddGiveAway = ({ setToggle }) => {
       divider
       fullWidth
     >
+      {/* eslint-enable */}
+
       <Layout>
         <Layout.AnnotatedSection
           title="Contest Name"
@@ -468,10 +472,6 @@ export const AddGiveAway = ({ setToggle }) => {
               </Stack>
 
               <br />
-
-              {/**
-                 Map Implementation for the sub-flash sales
-                 */}
 
               {showChild && (
                 <Box sx={{ maxWidth: 800 }}>
@@ -770,7 +770,7 @@ export const AddGiveAway = ({ setToggle }) => {
       </Layout>
       <br />
       <br />
-      {/* eslint-enable */}
+      {/* eslint-disable */}
 
       <Stack>
         <Stack.Item fill>
