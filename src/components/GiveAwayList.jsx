@@ -13,15 +13,18 @@ export const GiveAwayList = ({ setToggle }) => {
   const [giveAwaysList, setGiveAwaysList] = useState([]);
 
   useEffect(() => {
-    fetch("https://l1.gotomy.dev/shopify/api/v1/public/giveaways", {
-      method: "GET",
-      // mode:"no-cors",
-      headers: {
-        "Content-type": "application/json",
-        // "Access-Control-Allow-Origin": "*",
-        // "Access-Control-Allow-Methods": "DELETE, POST, GET, OPTIONS"
-      },
-    })
+    fetch(
+      "https://l1.gotomy.dev/shopify/api/v1/public/giveaways?limit=100000",
+      {
+        method: "GET",
+        // mode:"no-cors",
+        headers: {
+          "Content-type": "application/json",
+          // "Access-Control-Allow-Origin": "*",
+          // "Access-Control-Allow-Methods": "DELETE, POST, GET, OPTIONS"
+        },
+      }
+    )
       .then(async (response) => {
         let data = await response.json();
         setGiveAwaysList(data?.data);

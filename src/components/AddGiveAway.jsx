@@ -1,4 +1,11 @@
 import React, { useState } from "react";
+import Box from "@mui/material/Box";
+import Stepper from "@mui/material/Stepper";
+import Step from "@mui/material/Step";
+import StepLabel from "@mui/material/StepLabel";
+import StepContent from "@mui/material/StepContent";
+import Paper from "@mui/material/Paper";
+import Typography from "@mui/material/Typography";
 import {
   Card,
   Page,
@@ -11,14 +18,9 @@ import {
   Button,
   Heading,
   Checkbox,
-  InlineError,
   DatePicker,
 } from "@shopify/polaris";
-// import TimePicker from "react-time-picker/dist/entry.nostyle";
 import moment from "moment";
-// import DatePicker from "react-datepicker";
-// import TimezoneSelect from "react-timezone-select";
-// import "react-datepicker/dist/react-datepicker.css";
 import "./style.css";
 import { useAppBridge } from "@shopify/app-bridge-react";
 import { Redirect } from "@shopify/app-bridge/actions";
@@ -26,15 +28,33 @@ import { Redirect } from "@shopify/app-bridge/actions";
 export const AddGiveAway = ({ setToggle }) => {
   const app = useAppBridge();
   const redirect = Redirect.create(app);
+
   const [{ month, year }, setDate] = useState({
     month: new Date().getMonth(),
     year: new Date().getFullYear(),
   });
+
   var date = new Date();
+
   const [selectedDates, setSelectedDates] = useState({
     start: new Date(),
     end: new Date(date.getTime() + 86400000),
   });
+
+  //Child Flash Sales Date and Time
+
+  const [{ childMonth, childYear }, setChildDate] = useState({
+    childMonth: new Date().getMonth(),
+    childYear: new Date().getFullYear(),
+  });
+
+  const [selectedChildDates, setSelectedChildDates] = useState({
+    start: new Date(),
+    end: new Date(date.getTime() + 86400000),
+  });
+
+  const [activeStep, setActiveStep] = useState(0);
+
   const [longName, setLongName] = useState("");
   const [shortName, setShortName] = useState("");
   const [orderMessage, setOrderMessage] = useState("");
@@ -56,7 +76,6 @@ export const AddGiveAway = ({ setToggle }) => {
   const [referFriendchecked, setRefereFriendChecked] = useState(false);
 
   const [referFriendLink, setReferFriendLink] = useState(false);
-  const [value, onChange] = useState("10:00");
 
   const [showChild, setShowChild] = useState(false);
 
@@ -64,10 +83,10 @@ export const AddGiveAway = ({ setToggle }) => {
     {
       childLongName: "",
       childShortName: "",
-      childStartDate: "",
-      childEndDate: "",
-      childStartTime: "",
-      childEndTime: "",
+      childStartDate: selectedChildDates?.start,
+      childEndDate: selectedChildDates?.end,
+      childStartTime: "10:00",
+      childEndTime: "06:00",
     },
   ]);
 
@@ -79,6 +98,7 @@ export const AddGiveAway = ({ setToggle }) => {
     valid_from_time: true,
     valid_to_time: true,
   });
+  const [childValidation, setChildValidation] = useState(null);
 
   const options = [
     { label: "Single", value: "1" },
@@ -88,8 +108,12 @@ export const AddGiveAway = ({ setToggle }) => {
 
   const MultiplierOptions = [
     { label: "1x", value: "1" },
+    { label: "2x", value: "2" },
     { label: "5x", value: "5" },
     { label: "10x", value: "10" },
+    { label: "20x", value: "20" },
+    { label: "30x", value: "30" },
+    { label: "50x", value: "50" },
   ];
 
   const obtainBonusOptions = [
@@ -98,21 +122,53 @@ export const AddGiveAway = ({ setToggle }) => {
     { label: "45 Minutes", value: "45" },
   ];
 
+  // const handleSelectChange = (value) => {
+  //   if (value == 1) {
+  //     do {
+  //       formValues.pop();
+  //     } while (formValues.length > 1);
+  //     setShowChild(false);
+  //     setSelected(value);
+  //   } else if (value == 2) {
+  //     if (formValues.length >= 2) {
+  //       formValues.pop();
+  //       formValues.pop();
+  //     }
+  //     setSelected(value);
+  //     addFormFields();
+  //     setShowChild(true);
+  //   } else if (value == 3) {
+  //     if (formValues.length >= 3) {
+  //       formValues.pop();
+  //       formValues.pop();
+  //     }
+  //     setSelected(value);
+  //     addFormFields();
+  //     setShowChild(true);
+  //   }
+  // };
+
   const handleSelectChange = (value) => {
     if (value == 1) {
-      do {
-        formValues.pop();
-      } while (formValues.length > 2);
+      if (formValues.length > 1) {
+        while (formValues.length !== 1) {
+          formValues.pop();
+        }
+      }
       setShowChild(false);
       setSelected(value);
     } else if (value == 2) {
-      if (formValues.length > 1) {
-        formValues.pop();
+      if (formValues.length > 2) {
+        formValues.length = 2;
+      } else {
+        for (let index = 0; index < 2; index++) {
+          addFormFields();
+        }
       }
       setSelected(value);
       setShowChild(true);
     } else if (value == 3) {
-      if (formValues.length >= 2) {
+      if (formValues.length >= 3) {
         formValues.pop();
         formValues.pop();
       }
@@ -132,7 +188,6 @@ export const AddGiveAway = ({ setToggle }) => {
     setRefereFriendChecked(newChecked);
 
   const handleMonthChange = (month, year) => {
-    console.log(month, year, "month,year");
     setDate({ month, year });
   };
 
@@ -143,12 +198,33 @@ export const AddGiveAway = ({ setToggle }) => {
     setStartDate(start);
     setEndDate(end);
     setSelectedDates(dates);
+    setValidations({
+      ...validations,
+      valid_from_date: true,
+      valid_to_date: true,
+    });
   };
 
-  let handleChangeFields = (i, e) => {
+  //Child Setting
+
+  const handleChildMonthChange = (month, year) => {
+    setChildDate({ childMonth: month, childYear: year });
+  };
+
+  let handleChangeFields = (i, value, name) => {
     let newFormValues = [...formValues];
-    newFormValues[i][e.target.name] = e.target.value;
-    setFormValues(newFormValues);
+
+    if (name === "childStartDate") {
+      let { start, end } = value;
+      start = moment(start).format("YYYY-MM-DD");
+      end = moment(end).format("YYYY-MM-DD");
+      newFormValues[i]["childStartDate"] = start;
+      newFormValues[i]["childEndDate"] = end;
+      setSelectedChildDates(value);
+    } else {
+      newFormValues[i][name] = value;
+      setFormValues(newFormValues);
+    }
   };
 
   let addFormFields = () => {
@@ -159,23 +235,26 @@ export const AddGiveAway = ({ setToggle }) => {
         childShortName: "",
         childStartDate: "",
         childEndDate: "",
-        childStartTime: "",
-        childEndTime: "",
+        childStartTime: "10:00",
+        childEndTime: "06:00",
       },
     ]);
   };
 
   const submitGiveAway = () => {
     let _data = {
-      valid_from_date: startDate,
-      valid_to_date: endDate,
+      valid_from_date: moment(selectedDates.start).format("YYYY-MM-DD"),
+      valid_to_date: moment(selectedDates.end).format("YYYY-MM-DD"),
       name: longName,
       code: shortName,
       valid_from_time: startTime,
       valid_to_time: endTime,
+      entries: showChild ? formValues : {},
     };
 
     let isValidate = _data && validateData(_data);
+    console.log(isValidate, "isValidate");
+    console.log(childValidation, "childValidation");
 
     isValidate.length === 0 &&
       fetch("https://l1.gotomy.dev/shopify/api/v1/public/giveaways", {
@@ -198,16 +277,44 @@ export const AddGiveAway = ({ setToggle }) => {
 
   const validateData = (data) => {
     let array = [];
+    let childValObj = {};
     let _validations = validations;
-
     Object.keys(data).forEach((key) => {
       if (data[key] === "") {
         array.push(key);
         _validations[key] = false;
+      } else if (showChild) {
+        if (typeof data[key] === "object") {
+          data[key].forEach((value, index) => {
+            Object.keys(value).forEach((valueKey) => {
+              if (
+                value[valueKey] === "" &&
+                valueKey !== "childEndDate" &&
+                valueKey !== "childStartDate"
+              ) {
+                array.push(valueKey + index);
+                childValObj[valueKey + index] = false;
+              }
+            });
+          });
+        }
       }
     });
-    setValidations({ ...validations, validations: _validations });
+    setChildValidation(childValObj);
+    setValidations({ ...validations });
     return array;
+  };
+
+  const handleNext = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+  };
+
+  const handleBack = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  };
+
+  const handleReset = () => {
+    setActiveStep(0);
   };
 
   return (
@@ -254,7 +361,7 @@ export const AddGiveAway = ({ setToggle }) => {
         </Layout.AnnotatedSection>
 
         <Layout.AnnotatedSection
-          title="Date Information "
+          title="Date Information"
           description="This address will appear on your invoices."
         >
           <FormLayout>
@@ -274,21 +381,12 @@ export const AddGiveAway = ({ setToggle }) => {
                       multiMonth
                       allowRange
                     />
-
-                    {!validations.valid_from_date && (
-                      <InlineError
-                        message="This field name is required"
-                        fieldID="startDate"
-                      />
-                    )}
                   </div>
                 </Stack>
               </Stack>
               <div className="time-wrapper">
                 <Stack vertical={true}>
                   <TextStyle variation="strong">Select Start Time</TextStyle>
-                  {/* <div className="timerpicker"> */}
-                  {/* <TimePicker onChange={onChange} value={value} /> */}
                   <input
                     type="time"
                     name="startTime"
@@ -296,15 +394,7 @@ export const AddGiveAway = ({ setToggle }) => {
                     onChange={(e) => setStartTime(e.target.value)}
                     id="startTime"
                   />
-                  {/* </div> */}
-                  {/* {!validations.valid_from_time && (
-                    <InlineError
-                      message="This field name is required"
-                      fieldID="startTime"
-                    />
-                  )} */}
                 </Stack>
-
                 <Stack vertical={true}>
                   <TextStyle variation="strong">Select End Time</TextStyle>
                   <div>
@@ -316,14 +406,6 @@ export const AddGiveAway = ({ setToggle }) => {
                       id="endTime"
                     />
                   </div>
-
-                  {/* </div> */}
-                  {/* {!validations.valid_from_time && (
-                    <InlineError
-                      message="This field name is required"
-                      fieldID="startTime"
-                    />
-                  )} */}
                 </Stack>
               </div>
               <br />
@@ -385,129 +467,203 @@ export const AddGiveAway = ({ setToggle }) => {
 
               {/* eslint-disable */}
 
-              {showChild &&
-                formValues.map((element, index) => (
-                  <div className="form-inline" key={index}>
-                    <FormLayout>
-                      <Card sectioned>
-                        <TextStyle variation="strong">Long name</TextStyle>
-                        <TextField
-                          //  error={validations.name === false && "This field required"}
-                          value={element.childLongName}
-                          name="childLongName"
-                          //  onChange={(value) => {
-                          //    setLongName(value);
-                          //   //  setValidations({ ...validations, name: true });
-                          //  }}
-                          onChange={(e) => handleChangeFields(index, e)}
-                          placeholder="DCG #55 - Widebody Supra + $40,000"
-                          autoComplete="off"
-                        />
+              {/**
+                 Map Implementation for the sub-flash sales
+                 */}
 
-                        <br />
-                        <TextStyle variation="strong">Short Name</TextStyle>
-                        <TextField
-                          //  error={validations.code === false && "This field required"}
-                          name="childShortName"
-                          value={element.childShortName}
-                          onChange={(e) => handleChangeFields(index, e)}
-                          //  id="shortName"
-                          type="text"
-                          placeholder="DCGCG"
-                          //  onChange={(value) => {
-                          //    setShortName(value);
-                          //   //  setValidations({ ...validations, code: true });
-                          //  }}
-                          autoComplete="off"
-                        />
-                      </Card>
-                    </FormLayout>
+              {showChild && (
+                <Box sx={{ maxWidth: 800 }}>
+                  <Stepper activeStep={activeStep} orientation="vertical">
+                    {formValues?.map((element, index) => (
+                      <Step key={index}>
+                        <div className="form-inline">
+                          <StepLabel>Flash Sale {index + 1}</StepLabel>
+                          <StepContent>
+                            <FormLayout>
+                              <Card sectioned>
+                                <TextStyle variation="strong">
+                                  Long name
+                                </TextStyle>
+                                <TextField
+                                  error={
+                                    childValidation &&
+                                    childValidation[`childLongName${index}`] ===
+                                      false &&
+                                    "This field required"
+                                  }
+                                  value={element.childLongName}
+                                  name="childLongName"
+                                  onChange={(value) => {
+                                    handleChangeFields(
+                                      index,
+                                      value,
+                                      "childLongName"
+                                    );
+                                    childValidation &&
+                                      setChildValidation({
+                                        ...childValidation,
+                                        [`childLongName${index}`]: true,
+                                      });
+                                  }}
+                                  placeholder="DCG #55 - Widebody Supra + $40,000"
+                                  autoComplete="off"
+                                />
 
-                    <FormLayout>
-                      <br />
-                      <Card sectioned>
-                        <Stack>
-                          <Stack vertical={true}>
-                            <TextStyle variation="strong">
-                              Select Date
-                            </TextStyle>
-                            <div className="datepicker">
-                              <DatePicker
-                                month={month}
-                                year={year}
-                                onChange={(e) => handleChangeFields(index, e)}
-                                // onChange={(data) => {
-                                //   setDates(data);
-                                // }}
-                                onMonthChange={handleMonthChange}
-                                selected={selectedDates}
-                                multiMonth
-                                allowRange
-                              />
+                                <br />
+                                <TextStyle variation="strong">
+                                  Short Name
+                                </TextStyle>
+                                <TextField
+                                  error={
+                                    childValidation &&
+                                    childValidation[
+                                      `childShortName${index}`
+                                    ] === false &&
+                                    "This field required"
+                                  }
+                                  name="childShortName"
+                                  value={element.childShortName}
+                                  onChange={(value) => {
+                                    handleChangeFields(
+                                      index,
+                                      value,
+                                      "childShortName"
+                                    );
+                                    childValidation &&
+                                      setChildValidation({
+                                        ...childValidation,
+                                        [`childShortName${index}`]: true,
+                                      });
+                                  }}
+                                  type="text"
+                                  placeholder="DCGCG"
+                                  autoComplete="off"
+                                />
+                              </Card>
+                            </FormLayout>
 
-                              {/* {!validations.valid_from_date && (
-                      <InlineError
-                        message="This field name is required"
-                        fieldID="startDate"
-                      />
-                    )} */}
-                            </div>
-                          </Stack>
-                        </Stack>
-                        <div className="time-wrapper">
-                          <Stack vertical={true}>
-                            <TextStyle variation="strong">
-                              Select Start Time
-                            </TextStyle>
-                            {/* <div className="timerpicker"> */}
-                            {/* <TimePicker onChange={onChange} value={value} /> */}
-                            <input
-                              type="time"
-                              name="childStartTime"
-                              value={element.childStartTime}
-                              // onChange={(e) => setStartTime(e.target.value)}
-                              onChange={(e) => handleChangeFields(index, e)}
-                              id="childStartTime"
-                            />
-                            {/* </div> */}
-                            {/* {!validations.valid_from_time && (
-                    <InlineError
-                      message="This field name is required"
-                      fieldID="startTime"
-                    />
-                  )} */}
-                          </Stack>
-
-                          <Stack vertical={true}>
-                            <TextStyle variation="strong">
-                              Select End Time
-                            </TextStyle>
-                            <div>
-                              <input
-                                type="time"
-                                name="childEndTime"
-                                value={element.childEndTime}
-                                // onChange={(e) => setEndTime(e.target.value)}
-                                onChange={(e) => handleChangeFields(index, e)}
-                                id="childEndTime"
-                              />
-                            </div>
-
-                            {/* </div> */}
-                            {/* {!validations.valid_from_time && (
-                    <InlineError
-                      message="This field name is required"
-                      fieldID="startTime"
-                    />
-                  )} */}
-                          </Stack>
+                            <FormLayout>
+                              <br />
+                              <Card sectioned>
+                                <Stack>
+                                  <Stack vertical={true}>
+                                    <TextStyle variation="strong">
+                                      Select Date
+                                    </TextStyle>
+                                    <div className="datepicker">
+                                      <DatePicker
+                                        month={childMonth}
+                                        year={childYear}
+                                        name="childStartDate"
+                                        onChange={(value) =>
+                                          handleChangeFields(
+                                            index,
+                                            value,
+                                            "childStartDate"
+                                          )
+                                        }
+                                        onMonthChange={handleChildMonthChange}
+                                        selected={selectedChildDates}
+                                        multiMonth
+                                        allowRange
+                                        disableDatesBefore={selectedDates.start}
+                                        disableDatesAfter={selectedDates.end}
+                                      />
+                                    </div>
+                                  </Stack>
+                                </Stack>
+                                <div className="time-wrapper">
+                                  <Stack vertical={true}>
+                                    <TextStyle variation="strong">
+                                      Select Start Time
+                                    </TextStyle>
+                                    <input
+                                      type="time"
+                                      name="childStartTime"
+                                      value={element.childStartTime}
+                                      // onChange={(e) => setStartTime(e.target.value)}
+                                      onChange={(e) =>
+                                        handleChangeFields(
+                                          index,
+                                          e.target.value,
+                                          "childStartTime"
+                                        )
+                                      }
+                                      id="childStartTime"
+                                    />
+                                  </Stack>
+                                  <Stack vertical={true}>
+                                    <TextStyle variation="strong">
+                                      Select End Time
+                                    </TextStyle>
+                                    <div>
+                                      <input
+                                        type="time"
+                                        name="childEndTime"
+                                        value={element.childEndTime}
+                                        // onChange={(e) => setEndTime(e.target.value)}
+                                        onChange={(e) =>
+                                          handleChangeFields(
+                                            index,
+                                            e.target.value,
+                                            "childEndTime"
+                                          )
+                                        }
+                                        id="childEndTime"
+                                      />
+                                    </div>
+                                  </Stack>
+                                </div>
+                                <br />
+                                <br />
+                                <Box sx={{ mb: 2 }}>
+                                  <div
+                                    style={{ display: "flex", width: "30%" }}
+                                  >
+                                    <Button
+                                      fullWidth
+                                      id="continue-button"
+                                      primary={true}
+                                      onClick={handleNext}
+                                    >
+                                      {index === formValues.length - 1
+                                        ? "Finish"
+                                        : "Continue"}
+                                    </Button>
+                                    <Button
+                                      fullWidth
+                                      // primary={true}
+                                      disabled={index === 0}
+                                      onClick={handleBack}
+                                    >
+                                      Back
+                                    </Button>
+                                  </div>
+                                </Box>
+                              </Card>
+                            </FormLayout>
+                          </StepContent>
                         </div>
-                        <br />
-                        <br />
-                      </Card>
-                    </FormLayout>
-                  </div>
-                ))}
+                      </Step>
+                    ))}
+                  </Stepper>
+                  {activeStep === formValues.length && (
+                    <Paper square elevation={0} sx={{ p: 3 }}>
+                      <Typography>
+                        Flash sales information has been added
+                      </Typography>
+                      <br />
+                      <Button
+                        primary={true}
+                        onClick={handleReset}
+                        sx={{ mt: 1, mr: 1 }}
+                      >
+                        Reset
+                      </Button>
+                    </Paper>
+                  )}
+                </Box>
+              )}
 
               {/* eslint-enable */}
             </Card>

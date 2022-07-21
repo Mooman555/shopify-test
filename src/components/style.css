@@ -179,3 +179,29 @@
 #startTimeStack {
   width: 15vw;
 }
+
+.Polaris-Select__Input {
+  padding: 8px;
+}
+
+.Polaris-Select__Input > option {
+  padding-top: 6%;
+}
+
+#childStartTime {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid gray;
+  border-radius: 50px;
+}
+
+#childEndTime {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid gray;
+  border-radius: 50px;
+}
+
+#continue-button {
+  margin-right: 2%;
+}
