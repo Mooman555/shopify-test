@@ -41,7 +41,9 @@ export const AddGiveAway = ({ setToggle }) => {
     end: new Date(date.getTime() + 86400000),
   });
 
-  //Child Flash Sales Date and Time
+  {
+    /* eslint-disable */
+  }
 
   const [{ childMonth, childYear }, setChildDate] = useState({
     childMonth: new Date().getMonth(),
@@ -205,8 +207,6 @@ export const AddGiveAway = ({ setToggle }) => {
     });
   };
 
-  //Child Setting
-
   const handleChildMonthChange = (month, year) => {
     setChildDate({ childMonth: month, childYear: year });
   };
@@ -316,6 +316,10 @@ export const AddGiveAway = ({ setToggle }) => {
   const handleReset = () => {
     setActiveStep(0);
   };
+
+  {
+    /* eslint-enable */
+  }
 
   return (
     <Page
