@@ -1,7 +1,4 @@
 import React, { useState } from "react";
-{
-  /* eslint-enable */
-}
 import Box from "@mui/material/Box";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
@@ -319,9 +316,6 @@ export const AddGiveAway = ({ setToggle }) => {
   const handleReset = () => {
     setActiveStep(0);
   };
-  {
-    /* eslint-disable */
-  }
 
   return (
     <Page
